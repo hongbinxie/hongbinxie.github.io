@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>webpack笔记</title>
+    <url>/2020/03/11/webpack%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>一定要有<strong>看文档</strong>的习惯。避免<strong>版本升级</strong>后不懂用的情况、可以看其它配置啥的</p>
+<p>./同级、../上级。在Node中路径是路由形式/…，不写后缀。这不一样，一定别混淆</p>
+<p>学习基本用法，看得懂就可以了。公司不需要自己去配，因为后面的脚手架基本基于webpack去开发，如vue，它的脚手架是直接配置好的，能看得懂能调试就好了</p>
+<p>并且一定要知道打包的目录，因为若上传到服务器上，路径都要换，注意入口和<strong>出口的路径</strong>。</p>
+<p>建议经常去github上逛逛，比如搜zepto，能看到它的引入方式：下载、在哪个目录、怎么去引。</p>
+<h2 id="webpack介绍"><a href="#webpack介绍" class="headerlink" title="webpack介绍"></a>webpack介绍</h2><p>先去官网看文档，看版本、概念（官方介绍）。</p>
+<blockquote>
+<p>这里讲的是4.x版本</p>
+</blockquote>
+<p>是什么？</p>
+<p>一个模态模块(html、js、css、image)的打包器</p>
+<p>能干什么？</p>
+<p>模块化打包。</p>
+<blockquote>
+<p>1.网站打包成什么样？</p>
+<p>css、html、js变成一行(把多余的空格和回车都给压缩了)</p>
+<p>去除注释</p>
+<p>去除引号</p>
+<p>（现在很多框架都是基于webpack做的。即开发时是整洁的，开发之后就要打包成这样。）</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p>前提：安装了node、npm。</p>
+<p>3.x全局安装只用npm install webpack -g</p>
+<p>而4.x多了个cli脚手架</p>
+</blockquote>
+<p>（1）全局安装：用npm或cnpm安装</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">//<span class="number">2</span>个分别安装：</span><br><span class="line">npm <span class="keyword">install</span> webpack -g</span><br><span class="line">npm <span class="keyword">install</span> webpack-cli -g</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="comment">//或2个一起安装：</span></span><br><span class="line">npm install webpack webpack-<span class="keyword">cli</span> -<span class="keyword">g</span></span><br></pre></td></tr></table></figure>
+
+<p>2.初始化项目，生成package.json：</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">npm</span> init</span><br></pre></td></tr></table></figure>
+
+<p>进入项目目录，局部安装：会生成node_modules</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> webpack -S</span><br><span class="line">npm <span class="keyword">install</span> webpack-cli -S</span><br></pre></td></tr></table></figure>
+
+<h2 id="简单的只打包js"><a href="#简单的只打包js" class="headerlink" title="简单的只打包js"></a>简单的只打包js</h2><blockquote>
+<p>3.x版本命令: webpack a.js b.js 把a打包成b</p>
+<p>而4.x版本中，cli（脚手架）有个</p>
+<p>默认entry：    src/index.js</p>
+<p>默认output：    dist/main.js</p>
+</blockquote>
+<p>1.在项目目录下，要创建默认入口src/index.js，在入口文件写代码</p>
+<p>2.cmd中输入<strong>打包命令：webpack</strong></p>
+<p>会自动生成默认出口</p>
+<blockquote>
+<p>注意：main.js会默认变成生产环境的代码：变成一行。</p>
+</blockquote>
+<p>从生产环境代码-&gt;开发环境代码的打包命令（也叫<strong>未压缩打包命令）：webpack –mode development</strong></p>
+<h2 id="webpack四大核心"><a href="#webpack四大核心" class="headerlink" title="webpack四大核心"></a>webpack四大核心</h2><p>四个核心概念：入口（entry）、出口（output）、loader加载程序、插件（plugins）</p>
+<p>loader:能让webpack去打包非js文件；插件：有效地打包或压缩css、js、html、图片等。一般loader和插件配合使用</p>
+<h2 id="进行能打包js、css、html、图片等的配置"><a href="#进行能打包js、css、html、图片等的配置" class="headerlink" title="进行能打包js、css、html、图片等的配置"></a>进行能打包js、css、html、图片等的配置</h2><blockquote>
+<p>若看不懂在官网文档中的概念里有详细配置过程。</p>
+</blockquote>
+<ol>
+<li><p>webpack本身是打包js的，但若想要打包其它的：必须要进行相关<strong>配置</strong></p>
+</li>
+<li><p>配置：</p>
+</li>
+</ol>
+<blockquote>
+<p>先了解四个核心概念：入口（entry）、出口（output）、loader加载程序、插件（plugins）</p>
+<p>loader:能让webpack去打包非js文件；插件：有效地打包或压缩css、js、html、图片等。一般loader和插件配合使用</p>
+</blockquote>
+<p>（1）在项目目录里命名配置文件：webpack.config.js。在里面去配置</p>
+<p>（2）配置便捷的非压缩打包命令：</p>
+<p>在package.json里可以去配置。配置好就可npm start或npm run start或把start换成其它的。</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="string">"scirpt"</span>:&#123;	<span class="string">//</span>找到改位置</span><br><span class="line">	<span class="string">...</span></span><br><span class="line">	<span class="string">"start"</span>: <span class="string">"webpack --mode development"</span>	<span class="string">//</span>这儿start可以随便写</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>（3）配置默认入口、出口。之后打包命令依然是webpack</p>
+<blockquote>
+<p>src:开发阶段（写代码）。里面有如index.html、index.js、style.css、1.png等</p>
+<p>public:生产阶段（项目要上线）。里面有跟上面一样文件，只不过压缩了</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = require(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = &#123;</span><br><span class="line"></span><br><span class="line">	entry: <span class="string">'./src/index.js'</span>,	<span class="comment">//路径，可以改</span></span><br><span class="line">	output:&#123;</span><br><span class="line">		path: path.resolve(__dirname, <span class="string">'public'</span>),	<span class="comment">//路径，可以改</span></span><br><span class="line">    	filename: <span class="string">'bundle.js'</span>	<span class="comment">//打包后生成什么js</span></span><br><span class="line">	&#125;	</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>（4）</p>
+<h3 id="配置本地服务器"><a href="#配置本地服务器" class="headerlink" title="配置本地服务器"></a>配置本地服务器</h3><p>1）安装：npm install webpack-dev-server -S</p>
+<p>2）在webpack.config.js配置：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = require(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = &#123;</span><br><span class="line"></span><br><span class="line">	entry: <span class="string">'./src/index.js'</span>,	<span class="comment">//路径，可以改</span></span><br><span class="line">	output:&#123;</span><br><span class="line">		path: path.resolve(__dirname, <span class="string">'public'</span>),	<span class="comment">//路径，可以改</span></span><br><span class="line">    	filename: <span class="string">'bundle.js'</span>	<span class="comment">//打包后生成什么js。这儿也可以加hash：bundle-[hash].js,给个随机hash值。但每次改动入口的.js，会重新给hash值，后面会说到插件会自动去拿hash值</span></span><br><span class="line">	&#125;,	</span><br><span class="line">    devServer:&#123;	<span class="comment">//配置服务器</span></span><br><span class="line">    	contentBase:<span class="string">"./public"</span>,	<span class="comment">//选择本地服务器路径</span></span><br><span class="line">    	inline:<span class="keyword">true</span>	<span class="comment">//代码实时刷新</span></span><br><span class="line">    	<span class="comment">//post:"",	//选择端口，默认的为8080。</span></span><br><span class="line">    	<span class="comment">//hot:</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>3）在package.json配置便捷的运行命令:npm dev或npm run dev。原来命令：webpack-dev-server</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">"dev": "webpack-dev-server --open --inline"	//<span class="keyword">open</span>表示自动打开，<span class="keyword">inline</span>表示代码实时刷新</span><br></pre></td></tr></table></figure>
+
+<p>4）在本地服务器目录下新建个index.html，引入出口文件bundle.js。</p>
+<p>注意：如果要改index.html中的内容，都是<strong>到入口文件src/index.js里改</strong>。改完等一等，有点慢</p>
+<p>（之前用浏览器访问是显示本地服务器的目录浏览，现在则是显示index.html）</p>
+<p>（5）</p>
+<h3 id="配置loader"><a href="#配置loader" class="headerlink" title="配置loader"></a>配置loader</h3><p>（loader有很多，需要用时去查）loader列表：<a href="https://blog.csdn.net/keliyxyz/article/details/51649429" target="_blank" rel="noopener">https://blog.csdn.net/keliyxyz/article/details/51649429</a></p>
+<p>这儿我们要引入css文件，在index.html中写import’../css/style.css’;</p>
+<p>引入css需要style-loader和css-loader，而如果<strong>css想引用图片</strong>还需file-loader</p>
+<p>1)下载：npm install style-loader css-loader -S、npm install file-loader -S</p>
+<p>2)配置：</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">module</span>:&#123;</span><br><span class="line">		</span><br><span class="line">		rules:[</span><br><span class="line">			&#123;<span class="comment">//还可以options、结合插件去用，后面说。</span></span><br><span class="line">				test:<span class="regexp">/\.css$/</span>,	<span class="comment">//打包文件的后缀。正则，\.代表转义.</span></span><br><span class="line">				use: [<span class="string">'style-loader'</span>,<span class="string">'css-loader'</span>]	<span class="comment">//要配置全,否则无效</span></span><br><span class="line">			&#125;,</span><br><span class="line">			&#123;</span><br><span class="line">				test:<span class="regexp">/\.(jpg|png|jpeg)$/</span>,	<span class="comment">//打包文件的后缀,里面还可写</span></span><br><span class="line">				use: <span class="string">'file-loader'</span>	<span class="comment">//要配置全,否则无效</span></span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>配置完打包测试下。</p>
+<p>（6）</p>
+<h3 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h3><blockquote>
+<p>src:开发阶段（写代码）。里面有如index.html、index.js、style.css、1.png等</p>
+<p>public:生产阶段（项目要上线）。里面有跟上面一样文件，只不过压缩了</p>
+</blockquote>
+<p>要进行更多插件的配置，就去搜索该插件。</p>
+<p>要打包html，就需要html-webpack-plugin。要查看更多配置<a href="https://www.npmjs.com/package/html-webpack-tags-plugin" target="_blank" rel="noopener">https://www.npmjs.com/package/html-webpack-tags-plugin</a></p>
+<p>1)下载：npm install html-webpack-plugin -S</p>
+<p>2)配置（webpack.config.js）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">"html-webpack-plugin"</span>);	<span class="comment">//1.引入插件</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	...</span><br><span class="line">	plugins:[	<span class="number">2.</span>写配置</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">			template:<span class="string">"./src/index.html"</span>	<span class="comment">//若无参则不会打包对应内容。模板参数</span></span><br><span class="line">			<span class="comment">//filename:"a.html"	//可以给过来的index.html改名称</span></span><br><span class="line">			minify:&#123;	<span class="comment">//重要，缩小</span></span><br><span class="line">				removeAttributeQuotes:<span class="literal">true</span>,<span class="comment">//去除引号</span></span><br><span class="line">				removeComments:<span class="literal">true</span>,<span class="comment">//去除注释</span></span><br><span class="line">	          	removeEmptyAttributes:<span class="literal">true</span>,<span class="comment">//去除空属性</span></span><br><span class="line">	          	collapseWhitespace:<span class="literal">true</span><span class="comment">//去除空格</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line">		</span><br><span class="line">	]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="其它loader——HTML的img标记"><a href="#其它loader——HTML的img标记" class="headerlink" title="其它loader——HTML的img标记"></a>其它loader——HTML的img标记</h2><p>html-withimg-loader    让html支持图片</p>
+<p>1.下载（安装）：npm install html-withimg-loader -S</p>
+<p>2.配置（webpack.config.js）</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attribute">test</span>:/\.html$/,	//打包文件的后缀</span><br><span class="line">	use: <span class="string">'html-withimg-loader'</span>	//要配置全,否则无效</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字体图标和把打包文件放入文件夹"><a href="#字体图标和把打包文件放入文件夹" class="headerlink" title="字体图标和把打包文件放入文件夹"></a>字体图标和把打包文件放入文件夹</h2><p>这儿我们去bootstrap拿字体图标：引入bootstrap，添加<i class="字体图标的类"></i>，然后测试下，报错，从这可以拿到字体图标常用的后缀</p>
+<figure class="highlight clojure"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	test:/\.(<span class="name">woff</span>|ttf|svg|eot|xttf|woff2)$/,	//打包文件的后缀</span><br><span class="line">	use: 'file-loader?limit=1024&amp;name=./fonts/[names].[ext]'	//要配置全,否则无效。加参数:先?后参数：限制大小、定义路径和名称(<span class="name">names</span>代表原名,ext代表原后缀)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="提取分离CSS"><a href="#提取分离CSS" class="headerlink" title="提取分离CSS"></a>提取分离CSS</h2><p>之前已经给出口文件建好了各自目录：img、js、fonts。这儿要建css。有几个坑</p>
+<p>1.css提取</p>
+<p>插件：extract-text-webpack-plugin</p>
+<p>下载：npm install extract-text-webpack-plugin<strong>@next</strong> -S</p>
+<p>配置：</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">const</span> 	EXtractTextPlugin = <span class="built_in">require</span>(<span class="string">"extract-text-webpack-plugin"</span>);<span class="comment">//1.引入</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	rules:[</span><br><span class="line">		&#123;<span class="comment">//还可以options、结合插件去用，后面说。</span></span><br><span class="line">			test:<span class="regexp">/\.css$/</span>,	<span class="comment">//打包文件的后缀。正则，\.代表转义.</span></span><br><span class="line">			use:EXtractTextPlugin.extract(&#123;		<span class="comment">//把之前的use: ['style-loader','css-loader']改了</span></span><br><span class="line">				</span><br><span class="line">				fallback:<span class="string">"style-loader"</span>,</span><br><span class="line">				use:[&#123;</span><br><span class="line">                    loader:<span class="string">'css-loader'</span>,</span><br><span class="line">                    options:&#123;</span><br><span class="line">                      minimize:<span class="literal">true</span>	<span class="comment">//css压缩</span></span><br><span class="line">                    &#125;</span><br><span class="line">           	 	&#125;],</span><br><span class="line">                publicPath:<span class="string">"../"</span>	<span class="comment">//测试后会发现img目录跑到css目录了，要配这个</span></span><br><span class="line">			&#125;)	</span><br><span class="line">		&#125;,</span><br><span class="line">		...</span><br><span class="line">	],</span><br><span class="line">	plugins:[</span><br><span class="line">		<span class="keyword">new</span> EXtractTextPlugin(<span class="string">'./CSS/[name].css'</span>),	<span class="comment">//2.配置1</span></span><br><span class="line">		...</span><br><span class="line">	]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置babel"><a href="#配置babel" class="headerlink" title="配置babel"></a>配置babel</h2><p>核心：babel-core</p>
+<p>功能：babel-loader</p>
+<p>​            babel-preset-env</p>
+<p>​            babel-preset-react    支持jsx语法</p>
+<p>1.安装（下载）        </p>
+<p>​    npm install babel-core babel-loader babel-preset-env babel-preset-react -S</p>
+<p>2.配置（2种方法）</p>
+<p>方法1：在webpack.config.js里配置（不建议。babel-loader依赖少时才这样）</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test:<span class="regexp">/(\.jsx|\.js)$/</span>,</span><br><span class="line">    use:&#123;</span><br><span class="line">      	loader:<span class="string">"babel-loader"</span>,</span><br><span class="line">     	<span class="keyword">options</span>:&#123;</span><br><span class="line">     		presets:[<span class="string">"env"</span>,<span class="string">'react'</span>]		<span class="comment">//添加功能</span></span><br><span class="line">     	&#125;</span><br><span class="line">     &#125;,</span><br><span class="line">     <span class="keyword">exclude</span>:<span class="regexp">/node_modules/</span>		<span class="comment">//别包含：node_modules。其它的都要ES6转成ES5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法2：（建议。因为你不知道有多少依赖要添加）</p>
+<p>先在webpack.config.js里简单配置</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="symbol">    test:</span>/(\.jsx|\.js)$/,</span><br><span class="line"><span class="symbol">    use:</span>&#123;</span><br><span class="line"><span class="symbol">      	loader:</span><span class="string">"babel-loader"</span></span><br><span class="line">     &#125;,</span><br><span class="line"><span class="symbol">    exclude:</span>/node_modules/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还要在项目目录下新建与node_modules等同级的文件——.babelrc文件，里面配置：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="attr">"presets"</span>:[<span class="string">"env"</span>,'react']	<span class="comment">//添加功能</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="引入第三方库文件"><a href="#引入第三方库文件" class="headerlink" title="引入第三方库文件"></a>引入第三方库文件</h2><p>如jQuery、Bootstrap</p>
+<p>1.安装：npm install jquery -S    默认下最新版，若想下其它版本，后面加个@版本号</p>
+<p>2.引入：在入口index.js里需要引入，如写import $ from ‘jquery’</p>
+<h2 id="常用loader"><a href="#常用loader" class="headerlink" title="常用loader"></a>常用loader</h2><p>style-loader和css-loader    打包css</p>
+<p>file-loader                              让css支持图片；打包字体图标</p>
+<p>html-withimg-loader            让html支持图片</p>
+<p>babel-loader                          把ES6转换成ES5语法</p>
+<h2 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h2><p>html-webpack-plugin    打包html</p>
+<p>extract-text-webpack-plugin    提取分离css</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>webpack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的学习进度</title>
+    <url>/2020/03/11/%E8%BD%AF%E4%BB%B6%E6%96%B9%E5%90%91%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A6/</url>
+    <content><![CDATA[<h1 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h1><h2 id="界面开发"><a href="#界面开发" class="headerlink" title="界面开发"></a>界面开发</h2><p>html</p>
+<p>css</p>
+<p>js</p>
+<p>jQuery</p>
+<p>H5</p>
+<p>C3</p>
+<p>微信小程序</p>
+<h2 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h2><p>ajax</p>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>Node</p>
+<p>PHP</p>
+<p>python</p>
+<p>java</p>
+<h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><h2 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h2><p>Bootstrap</p>
+<h2 id="前端框架"><a href="#前端框架" class="headerlink" title="前端框架"></a>前端框架</h2><p>vue</p>
+<h2 id="后端框架"><a href="#后端框架" class="headerlink" title="后端框架"></a>后端框架</h2><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>git</p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>MySQL</p>
+<p>oracle</p>
+<p>mongdb</p>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><h2 id="WPcms建站"><a href="#WPcms建站" class="headerlink" title="WPcms建站"></a>WPcms建站</h2><h2 id="DEDEcms建站"><a href="#DEDEcms建站" class="headerlink" title="DEDEcms建站"></a>DEDEcms建站</h2><h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><h2 id="其它博客"><a href="#其它博客" class="headerlink" title="其它博客"></a>其它博客</h2>]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>技术栈</tag>
+      </tags>
+  </entry>
+</search>
