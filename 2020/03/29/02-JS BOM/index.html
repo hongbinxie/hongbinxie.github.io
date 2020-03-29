@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="注意一、window一个特殊的属性:window.name,建议不用name当变量。 二、alert()、prompt()、confirm()实际不用，各浏览器样式不一样、不可控。改进：用div+CSS制作    对话框+后面的遮挡层。 三、javaScript分三个部分： 1.ECMAScript标准——基本语法 2.DOM——Document Object Model 文档对象模型，操作页面元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02-JS BOM">
+<meta property="og:url" content="http://yoursite.com/2020/03/29/02-JS%20BOM/index.html">
+<meta property="og:site_name" content="凝水为城">
+<meta property="og:description" content="注意一、window一个特殊的属性:window.name,建议不用name当变量。 二、alert()、prompt()、confirm()实际不用，各浏览器样式不一样、不可控。改进：用div+CSS制作    对话框+后面的遮挡层。 三、javaScript分三个部分： 1.ECMAScript标准——基本语法 2.DOM——Document Object Model 文档对象模型，操作页面元">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-29T14:42:20.656Z">
+<meta property="article:modified_time" content="2020-03-29T15:04:30.397Z">
+<meta property="article:author" content="谢红斌">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/29/02-JS%20BOM/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>02-JS BOM | 凝水为城</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+  
+<link rel="alternate" href="/atom.xml" title="凝水为城" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	
+	<a href="https://your-url" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凝水为城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">谢红斌的博客小栈</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/02-JS%20BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="谢红斌">
+      <meta itemprop="description" content="谢红斌个人网站-记录web前端学习的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凝水为城">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          02-JS BOM
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-29 22:42:20 / 修改时间：23:04:30" itemprop="dateCreated datePublished" datetime="2020-03-29T22:42:20+08:00">2020-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>一、window一个特殊的属性:window.name,建议不用name当变量。</p>
+<p>二、alert()、prompt()、confirm()实际不用，各浏览器样式不一样、不可控。改进：用div+CSS制作    对话框+后面的遮挡层。</p>
+<p>三、javaScript分三个部分：</p>
+<p>1.ECMAScript标准——基本语法</p>
+<p>2.DOM——Document Object Model 文档对象模型，操作页面元素的</p>
+<p>3.BOM——Browser Object Model 浏览器对象模型，操作浏览器的</p>
+<h2 id="顶级对象"><a href="#顶级对象" class="headerlink" title="顶级对象"></a>顶级对象</h2><p>浏览器的顶级对象：window</p>
+<p>页面的顶级对象：document</p>
+<blockquote>
+<p>页面中所有内容（包括window）都是属于浏览器的——页面中的内容也都是window的，所以window是可以省略的</p>
+</blockquote>
+<p>jQuery中顶级对象：$</p>
+<h2 id="页面加载事件"><a href="#页面加载事件" class="headerlink" title="页面加载事件"></a>页面加载事件</h2><ul>
+<li><p>onload——页面加载完后事件</p>
+</li>
+<li><p>onunload——页面关闭后事件（谷歌不兼容）</p>
+</li>
+<li><p>onbeforeunload——页面关闭前事件（谷歌不兼容）</p>
+</li>
+</ul>
+<h2 id="location对象——地址栏URL上的操作"><a href="#location对象——地址栏URL上的操作" class="headerlink" title="location对象——地址栏URL上的操作"></a>location对象——地址栏URL上的操作</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.location);	<span class="comment">//返回的是浏览器地址</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>属性（无括号）：</strong>返回URL的各组成部分</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//地址栏上#及后面的内容</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.location.hash);</span><br><span class="line"><span class="comment">//主机名及端口号（“窗口”）</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.location.host);</span><br><span class="line"><span class="comment">//主机名</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.location.hostname);</span><br><span class="line"><span class="comment">//文件的路径---相对路径</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.location.pathname);</span><br><span class="line"><span class="comment">//端口号</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.location.port);</span><br><span class="line"><span class="comment">//协议</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.location.protocol);</span><br><span class="line"><span class="comment">//搜索的内容（s?后面的）</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.location.search);</span><br><span class="line"></span><br><span class="line"><span class="comment">//属性，跳转页面的，必须记住</span></span><br><span class="line">location.href=<span class="string">"http://www.jd.com"</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法（有括号）：</strong> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这2个有历史记录</span></span><br><span class="line">location.href=<span class="string">"http://www.jd.com"</span>;<span class="comment">//跳转页面属性-----------------&gt;必须记住</span></span><br><span class="line">location.assign(<span class="string">"http://www.jd.com"</span>);<span class="comment">//跳转页面方法</span></span><br><span class="line"></span><br><span class="line">location.reload();<span class="comment">//刷新</span></span><br><span class="line">location.replace(<span class="string">"http://www.jd.com"</span>);<span class="comment">//替换地址栏上的地址，没有历史记录</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="history对象——历史纪录的后退和前进"><a href="#history对象——历史纪录的后退和前进" class="headerlink" title="history对象——历史纪录的后退和前进"></a>history对象——历史纪录的后退和前进</h2><p>了解有这几种即可，用不到。</p>
+<ul>
+<li>back()    后退</li>
+<li>forward()    前进</li>
+<li>go()</li>
+</ul>
+<h2 id="navigator对象——获取系统、浏览器的信息"><a href="#navigator对象——获取系统、浏览器的信息" class="headerlink" title="navigator对象——获取系统、浏览器的信息"></a>navigator对象——获取系统、浏览器的信息</h2><p><strong>属性：</strong></p>
+<ul>
+<li>userAgent</li>
+</ul>
+<p>通过userAgent可以判断用户浏览器的类型</p>
+<ul>
+<li>platform</li>
+</ul>
+<p>通过platform可以判断浏览器所在的系统平台类型.</p>
+<h2 id="定时器：setTimeout"><a href="#定时器：setTimeout" class="headerlink" title="定时器：setTimeout()"></a>定时器：setTimeout()</h2><p>BOM中有2个定时器。</p>
+<p>setTimeout（函数，时间）；    //一次性的定时器</p>
+<p>返回值：该定时器的id</p>
+<p>clearTimeout（id）；    //虽一次性，但也要清理所占空间。</p>
+<h2 id="定时器：setInterval"><a href="#定时器：setInterval" class="headerlink" title="定时器：setInterval()"></a>定时器：setInterval()</h2><p>定时器：有方法setInterval()、clearInterval(); //隔一段时间就执行一次函数的定时器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">一、设置定时器</span><br><span class="line"><span class="comment">//参数1:函数  参数2:时间---毫秒---1000毫秒--1秒</span></span><br><span class="line"><span class="comment">//执行过程:页面加载完毕后,每隔1秒就执行一次，一直执行。</span></span><br><span class="line"><span class="comment">//该定时器会返回自己的id值——如timeId</span></span><br><span class="line"><span class="keyword">var</span> timeId = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">"hello"</span>);<span class="comment">//断言</span></span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line">二、清理定时器</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//点击按钮,停止定时器</span></span><br><span class="line">    <span class="comment">//参数:要清理的定时的id的值</span></span><br><span class="line">    <span class="built_in">window</span>.clearInterval(timeId);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="相关实例"><a href="#相关实例" class="headerlink" title="相关实例"></a>相关实例</h2><h3 id="封装动画函数（匀速、缓动（变速））"><a href="#封装动画函数（匀速、缓动（变速））" class="headerlink" title="封装动画函数（匀速、缓动（变速））"></a>封装动画函数（匀速、缓动（变速））</h3><h4 id="匀速的动画函数"><a href="#匀速的动画函数" class="headerlink" title="匀速的动画函数"></a>匀速的动画函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置任意的一个元素,移动到指定的目标位置</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">element, target</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//因为每点击一次按钮都会产生定时器，所以要先清除定时器</span></span><br><span class="line">  clearInterval(element.timeId);</span><br><span class="line">  <span class="comment">//因为元素要移动，所以要设定时器。</span></span><br><span class="line">  <span class="comment">//把定时器的id值存储到一个对象的一个属性中，方便清理</span></span><br><span class="line">  element.timeId = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//获取元素的当前的位置,数字类型</span></span><br><span class="line">    <span class="keyword">var</span> current = element.offsetLeft;</span><br><span class="line">    <span class="comment">//每次移动的距离</span></span><br><span class="line">    <span class="keyword">var</span> step = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">//从左往右：走正数。从右往左：走负数</span></span><br><span class="line">    step = current &lt; target ? step : -step;</span><br><span class="line">    <span class="comment">//当前移动到位置</span></span><br><span class="line">    current += step;</span><br><span class="line">    <span class="comment">//判断目标位置与当前位置的距离</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Math</span>.abs(current - target) &gt; <span class="built_in">Math</span>.abs(step)) &#123;</span><br><span class="line">      element.style.left = current + <span class="string">"px"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//清理定时器</span></span><br><span class="line">      clearInterval(element.timeId);</span><br><span class="line">      <span class="comment">//直接到达目标</span></span><br><span class="line">      element.style.left = target + <span class="string">"px"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="number">20</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="变速（缓动）的动画函数"><a href="#变速（缓动）的动画函数" class="headerlink" title="变速（缓动）的动画函数"></a>变速（缓动）的动画函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当前位置：current</span><br><span class="line">目标位置：target</span><br><span class="line">缓动的效果：步数=（目标-当前）/<span class="number">10</span>。 由快到慢</span><br><span class="line">注意：如果步数&gt;<span class="number">0</span>，向上取整，返回向下。又变速可到<span class="number">1</span>，所以不需要判断当前、目标、步数三者关系</span><br></pre></td></tr></table></figure>
+
+<h5 id="筋斗云导航栏案例："><a href="#筋斗云导航栏案例：" class="headerlink" title="筋斗云导航栏案例："></a>筋斗云导航栏案例：</h5><blockquote>
+<p>关键：不是点击的时候效果定在这，点击只是记录了此次点击的位置，而是离开时定在这的：回到上一次点的位置。</p>
+<p>过程：获取云彩；获取所有的li标签；循环遍历分别注册鼠标进入（ 封装动画函数移动云彩的左边距，移动到鼠标此次进入的li的位置animate(cloud,this.offsetLeft)）、鼠标点击（点击时记录此次点击的位置，没点就回去：先设外面var LastPosition=0回去，再里面LastPosition=this.offsetLeft）、鼠标离开事件（离开定在上一次点击位置：animate(cloud,LastPostion)）。因为循环，所以用命名函数。</p>
+</blockquote>
+<p>升级4-5次变速函数（理解即可，能写出最终版本）</p>
+<h4 id="封装缓动动画函数增加任意一个属性"><a href="#封装缓动动画函数增加任意一个属性" class="headerlink" title="封装缓动动画函数增加任意一个属性"></a>封装缓动动画函数增加任意一个属性</h4><blockquote>
+<p>1.添加获取计算后的任意一个样式属性函数值</p>
+<p>2.将width改成变量attr，<strong>定时器添加个变量attr到参数2。</strong></p>
+<p>3.获取元素当前位置改为parseInt（getStyle（element，attr））</p>
+</blockquote>
+<h4 id="封装缓动动画函数增加任意多个属性"><a href="#封装缓动动画函数增加任意多个属性" class="headerlink" title="封装缓动动画函数增加任意多个属性"></a>封装缓动动画函数增加任意多个属性</h4><blockquote>
+<p>最初做法：给动画函数添加多个参数，来获取<strong>一对数据</strong>（任意多个属性、对应的属性值为：目标位置）。一对的数据用json对象组成。</p>
+<p>优化：function animate(element,<strong>json</strong>)</p>
+<p>按钮事件里定义json:animate（my$(“dv”),{…}）;</p>
+<p>动画函数里原来只能操作一个属性一个目标，要操作多个属性多个目标：将定时器内代码都放到循环遍历里，让var target=json[attr]（.变量；[“属性”]）</p>
+<p>bug：原来只要有一个属性到达目标就清除定时器，现在要让每个属性全到达目标才清理——改成</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span>(current!=target)&#123;</span><br><span class="line">    flag=<span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(flag)&#123;</span><br><span class="line">  <span class="comment">//清理定时器</span></span><br><span class="line">  clear<span class="constructor">Interval(<span class="params">element</span>.<span class="params">timeId</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="封装缓动动画函数增加任意多个属性、回调函数：实现多个动画"><a href="#封装缓动动画函数增加任意多个属性、回调函数：实现多个动画" class="headerlink" title="封装缓动动画函数增加任意多个属性、回调函数：实现多个动画"></a>封装缓动动画函数增加任意多个属性、回调函数：实现多个动画</h4><p>回调函数：当一个函数作为参数使用，就是回调函数。</p>
+<p>在哪加？function animate（，，这加）。</p>
+<p>在哪用？所有属性全部到达目标位置时用——在if（flag）中清除定时器后写：判断有没传入回调函数？传入才调用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(fn)&#123;</span><br><span class="line">  fn();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="在上面再增加透明度、层级（最终版本）"><a href="#在上面再增加透明度、层级（最终版本）" class="headerlink" title="在上面再增加透明度、层级（最终版本）"></a>在上面再增加透明度、层级（最终版本）</h4><p>思路——</p>
+<p>zIndex:直接赋值</p>
+<p>opacity：数字类型——小数——放大100倍。再在获取计算后的值那除100且不需px。</p>
+<p>把上面2个都当成json的属性</p>
+<p>在哪改？json代码块里改：放里面的前面，判断json属性是否=他两，if（放除判断是否到达目标的代码，但透明度不需取整且当前、目标都*100。再在获取计算后的值那除100且不需px）-else if（层级改变就是直接改变它的属性值）-else（放除判断是否到达目标的代码）</p>
+<h4 id="手风琴案例"><a href="#手风琴案例" class="headerlink" title="手风琴案例"></a>手风琴案例</h4><ol>
+<li>设个放手风琴的div</li>
+<li>加载图片：先获取所有的li标签。循环中设置背景图片</li>
+<li>事件：在上述循环中加入鼠标进入、鼠标离开事件（因为循环，所以命名函数事件）</li>
+<li>鼠标进入函数：排他、设动画效果：循环中设li都为宽100，循环外设当前li宽为800</li>
+<li>鼠标离开函数：循环设置所有都恢复：宽为原来宽</li>
+<li>bug：进入时最后一个宽较窄，不管</li>
+</ol>
+<h4 id="开、关机动画案例"><a href="#开、关机动画案例" class="headerlink" title="开、关机动画案例"></a>开、关机动画案例</h4><p>关键：给×注册点击事件——动画函数设置最下面的div高渐渐变0，回调函数设置整个box的宽渐渐变0</p>
+<h4 id="旋转木马案例"><a href="#旋转木马案例" class="headerlink" title="旋转木马案例"></a>旋转木马案例</h4><p>关键：数组的四个添加删除方法、图片散开：动画函数中设（层级、透明度、宽上左）、assign()重新分配函数</p>
+<p>过程：</p>
+<p>1.图片散开：找到所有li，声明为list，然后把代码放入function assign()（加载后图片（li）散开循环给每个设动画函数），再调用</p>
+<p>2.左右焦点按钮：a的href可以写地址、锚点、javascript:;(用来点击做什么事的,中间的void(0)可省)</p>
+<p>鼠标进入，左右焦点的div渐渐显示：用动画函数设透明度为1</p>
+<p>鼠标离开，渐渐隐藏：用动画函数设透明度为0</p>
+<p>3.点击右边按钮事件：让图片依次换json属性组，用数组的四个添加删除方法——这里用config.push(config.shift());assign();</p>
+<p>4.点左边按钮：config.unshift(config.pop());assign();</p>
+<p>5.加锁：防止鼠标点多次动画没时间加载导致卷起来——</p>
+<p>在加载事件中先设置var flag=true;//假设所有的动画执行完毕了——锁。再把左、右边按钮事件改为<strong>if(flag){flag=false;</strong>con…;assign();<strong>};</strong>。重新分配函数中再把里面的动画函数添加个函数作参数3，其中代码flag=true;</p>
+<h3 id="轮播图"><a href="#轮播图" class="headerlink" title="轮播图"></a>轮播图</h3><p>3个功能：自动切换、鼠标在小圆点切换、鼠标在左右箭头切换</p>
+<h4 id="简单的轮播图"><a href="#简单的轮播图" class="headerlink" title="简单的轮播图"></a>简单的轮播图</h4><p>鼠标图片在小圆点切换</p>
+<blockquote>
+<p>关键点：排他功能、移动ul(每个图片的宽*鼠标放在这个按钮的索引值)、封装动画函数、overflow:hidden;</p>
+<p>步骤：获取需要的元素值（相框的父级、相框、相框宽度、ul、所有span）、循环排他、循环时候把索引值保存在每个span的自定义属性中、获取当前鼠标进入的span的索引、用封装动画函数来切换图片（-宽*索引值）</p>
+</blockquote>
+<h4 id="左右焦点轮播图"><a href="#左右焦点轮播图" class="headerlink" title="左右焦点轮播图"></a>左右焦点轮播图</h4><blockquote>
+<p>关键：获取span—&gt;获取一个左右焦点所在的div。给2个div都注册事件。显示和隐藏左右焦点的div——为box注册事件。直接index++/–，不需存放index。用封装动画函数来切换图片（-宽*索引值） </p>
+</blockquote>
+<h4 id="无缝连接的轮播图（用到定时器）"><a href="#无缝连接的轮播图（用到定时器）" class="headerlink" title="无缝连接的轮播图（用到定时器）"></a>无缝连接的轮播图（用到定时器）</h4><p>最后一张再到显示第一张</p>
+<blockquote>
+<p>功能：当页面加载时图片移动（定时器）、当鼠标进去时停止出来又继续移动</p>
+<p>关键：原相框+一张假图（第一张图），当到原相框（-多少px）时跳回第一张图0px且让current变回0。定时器。进入box停止，即清除定时器。离开box时再重新开个定时器</p>
+</blockquote>
+<h4 id="完整的轮播图"><a href="#完整的轮播图" class="headerlink" title="完整的轮播图"></a>完整的轮播图</h4><p>3个功能：自动切换、鼠标在小圆点切换、鼠标在左右箭头切换</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">完整思路：</span><br><span class="line"><span class="number">1.</span> 根据ul中li个数(图片的个数)动态的创建li,并且加入到ol中,作为小按钮来使用</span><br><span class="line">为每个ol中的li添加鼠标进入的事件,(添加事件之前,先把索引保存在每个li的自定义属性中),鼠标进入li的时候做排他功能(背景颜色),移动图片(图片整体移动,移动的ul,每次移动的是一个图片的宽度,图片的宽度就是向宽的宽度),调用的是动画函数,移动ul,移动的是索引值*图片的宽度,并且把索引值存储在一个全局变量中,pic</span><br><span class="line"><span class="number">2.</span> 创建li之后,<span class="number">1</span>---设置ol中第一个li有默认的背景颜色,<span class="number">2</span>---把ul中的第一个li克隆一下(无缝连接的效果)追加到ul中所有的li的最后面(无缝效果:页面中的第一个图片和最后一个图片是同一个图片)</span><br><span class="line"><span class="number">3.</span>左右焦点的div显示和隐藏</span><br><span class="line"><span class="number">4.</span>为左右按钮注册点击事件</span><br><span class="line">每一次点击右边的按钮,先判断pic的值是不是ul中li的length<span class="number">-1</span>(pic的值最大是<span class="number">5</span>),此时设置pic的值为<span class="number">0</span>,同时设置ul距离左边的left值为<span class="number">0</span>(初始值),此时pic立刻加<span class="number">1</span>,移动ul,用户看到的就是第二个图片</span><br><span class="line">设置小按钮的背景颜色</span><br><span class="line">左边按钮,需要判断pic值是不是<span class="number">0</span>,如果是<span class="number">0</span>此时pic=<span class="number">5</span>,ul的left为<span class="number">5</span>*图片的宽,立刻pic<span class="number">-1</span>,然后ul移动一张图片,此时用户看到了第五个图片</span><br><span class="line"><span class="number">5.</span>自动播放在页面加载的时候,启动一个定时器,里面调用的就是右边按钮的点击事件的处理函数</span><br></pre></td></tr></table></figure>
+
+<p>1.先获取元素：（父级div、相框、相框宽度、ul、ul中的所有li、ol、焦点的div）</p>
+<p>2.按钮移动图片：</p>
+<p>​    创建小按钮——根据ul中的li个数（创建li标签、加入到ol中、添加li内容；在每个ol中的li标签上添加一个自定义属性，存储索引值注册鼠标进入事件（排他功能：先干掉所有li的背景颜色i=空，再设置当前鼠标进来的li的背景颜色this=，   获取鼠标进入的li的当前索引值，   移动ul））</p>
+<p>​    设置ol中第一个li有背景颜色</p>
+<p>3.右侧点击按钮移动图片：</p>
+<p>​    无缝效果：克隆一个ul中第一个li，加到ul中的最后（true克隆标签包括内容）</p>
+<p>​    鼠标进入到box的div显示左右焦点的div</p>
+<p>​    鼠标离开隐藏div</p>
+<p>​    右按钮事件：①利用同步   来对应上个按钮的下一张（如var p=0；function f1(){p++;}f1();console.log(p);输出p=1）②封装动画函数来移动ul   ③达到无缝效果：判断，<strong>当用户看到假图pic=length-1时，pic变成0跳到真图</strong>，所以要放在pic++前面</p>
+<p>④焦点要与上个按钮同步：判断，（如果pic==5说明显示第6个图——假图，第一个小按钮有颜色，所以）当用户看到假图pic=length-1时，设置上个按钮的背景颜色：length-1变为空，0变色。否则排他功能：先干掉所有li的背景颜色i=空，再设置当前鼠标进来的li的背景颜色pic=。</p>
+<p>4.左按钮事件</p>
+<p>​    ①图片移动：与右的差别</p>
+<p>如果pic==0，<strong>pic要变成5</strong>，要显示最后一张：left=-pic*imgWidth+”px“；</p>
+<p>​    <strong>pic–</strong></p>
+<p>​    动画函数让ul负移动：-pic*imgWidth</p>
+<p>​    ②排他功能：i、pic</p>
+<p>5.自动播放功能：</p>
+<p>定时器：隔一段事件调用右按钮事件——先将右按钮事件的函数写成命名函数。再将定时器放在克隆后面，setInterval(命名函数，1000)。再将封装动画函数改成10毫秒，保证1秒内移动完图片。鼠标进来时清理定时器，离开时设定时器。</p>
+</blockquote>
+<h3 id="小实例："><a href="#小实例：" class="headerlink" title="小实例："></a>小实例：</h3><p>先总结思路，再第二天不看编程，最后再修改。</p>
+<h4 id="强制阅读协议按钮"><a href="#强制阅读协议按钮" class="headerlink" title="强制阅读协议按钮"></a>强制阅读协议按钮</h4><blockquote>
+<p>思路：给该按钮设定时器并不让点击，当time为0时，按钮值改为同意且可点击并取消定时器。</p>
+</blockquote>
+<h4 id="div渐变"><a href="#div渐变" class="headerlink" title="div渐变"></a>div渐变</h4><blockquote>
+<p>思路：给按钮设定时器：透明度逐渐从1到0（因为小数的结果不一定，所以先设个变量opacity为10让其每隔1秒减一，之后再/10，再赋给div的style.opacity。</p>
+<p>当opacity&lt;=0时，清除定时器，防止一直减下去。</p>
+</blockquote>
+<p>div变宽</p>
+<p>给按钮事件设置定时器</p>
+<p>定时器中：设变量，每隔多少+=。</p>
+<p>​                    给div的style.width赋值</p>
+<p>​                    设if语句设清除定时器条件。</p>
+<h4 id="移动元素"><a href="#移动元素" class="headerlink" title="移动元素"></a>移动元素</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">400</span>时：</span><br><span class="line">按钮事件里设定时器</span><br><span class="line">获取<span class="keyword">div</span>的当前的位置</span><br><span class="line"><span class="keyword">div</span>每次移动多少像素<span class="comment">---步数</span></span><br><span class="line">每次移动后的距离</span><br><span class="line"><span class="keyword">if</span>判断当前移动后的位置是否到达目标位置</span><br><span class="line"><span class="keyword">else</span>清理定时器</span><br><span class="line"><span class="number">800</span>时：同理</span><br></pre></td></tr></table></figure>
+
+<h4 id="迂回移动元素、封装动画函数"><a href="#迂回移动元素、封装动画函数" class="headerlink" title="迂回移动元素、封装动画函数"></a>迂回移动元素、封装动画函数</h4><blockquote>
+<p>思路：2按钮事件功能相同，所以可封装</p>
+<ol>
+<li><p>获取要移动div的当前位置</p>
+</li>
+<li><p>div每次移动多少像素——步数（<strong>迂回，所以给步数赋的值要相反</strong>）</p>
+</li>
+<li><p>每次移动后的距离</p>
+</li>
+<li><p>if——判断当前移动后的位置是否到达目标位置（注意：current与target距离若小于步数情况）</p>
+</li>
+<li><p>else——清除（一个）定时器</p>
+</li>
+<li><pre><code>注意——每点击按钮都会产生一个定时器
+//要先在函数里清理定时器
+clearInterval(element.timeId);
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+</code></pre></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code></code></pre></blockquote>
+<h4 id="一起摇"><a href="#一起摇" class="headerlink" title="一起摇"></a>一起摇</h4><blockquote>
+<p>思路</p>
+<p>1.将要摇的部分放入div（父元素）中，让div（父元素）动</p>
+<p>2.设两个按钮：摇起来、停止</p>
+<p>3.该部分原本以文档流方式在左上，接着以脱离文档流方式移动位置</p>
+<p>脱离文档流：position:absolute;    //div的CSS样式</p>
+<p>要想动起来：改left（横坐标x）、top（纵坐标y）值</p>
+<p>要想动多次：隔几秒动一次——设定时器    //将js断言代码放入，合理调速度</p>
+<p>横纵坐标不确定：给left、top都设随机数    //代码优化：设变量x、y，再赋值给left、top</p>
+<p>4.停止：清除定时器函数，注意全局变量与局部变量</p>
+<p>5.以编程规范编写代码。</p>
+</blockquote>
+<h4 id="一闪一闪亮晶晶"><a href="#一闪一闪亮晶晶" class="headerlink" title="一闪一闪亮晶晶"></a>一闪一闪亮晶晶</h4><blockquote>
+<ol>
+<li>点击“亮起来”按钮、给div创建元素：星星</li>
+<li>位置：给left、top随机值</li>
+<li>脱离文档流：position:absolute;</li>
+<li>设定时器</li>
+</ol>
+</blockquote>
+<h4 id="美女图片时钟"><a href="#美女图片时钟" class="headerlink" title="美女图片时钟"></a>美女图片时钟</h4><blockquote>
+<ol>
+<li>获取当前时间：时间对象</li>
+<li>获取小时。注意&lt;10时，前面加个“0“，用三元操作符</li>
+<li>获取秒。</li>
+<li>按时间输出图片。输出时把要动态变化的部分用<strong>字符串拼接变量</strong>的方式拼接。</li>
+<li>定时器：页面加载完后隔1秒才执行。要马上执行：把前面函数先声明，定时器代码执行前先执行一遍之前函数。</li>
+</ol>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/29/01-JavaScript%E5%9F%BA%E7%A1%80/" rel="prev" title="01-JavaScript基础">
+      <i class="fa fa-chevron-left"></i> 01-JavaScript基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/29/01-%E5%8A%A8%E6%80%81%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" rel="next" title="01-动态网站开发基础">
+      01-动态网站开发基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">1.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶级对象"><span class="nav-number">2.</span> <span class="nav-text">顶级对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面加载事件"><span class="nav-number">3.</span> <span class="nav-text">页面加载事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#location对象——地址栏URL上的操作"><span class="nav-number">4.</span> <span class="nav-text">location对象——地址栏URL上的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history对象——历史纪录的后退和前进"><span class="nav-number">5.</span> <span class="nav-text">history对象——历史纪录的后退和前进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navigator对象——获取系统、浏览器的信息"><span class="nav-number">6.</span> <span class="nav-text">navigator对象——获取系统、浏览器的信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时器：setTimeout"><span class="nav-number">7.</span> <span class="nav-text">定时器：setTimeout()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时器：setInterval"><span class="nav-number">8.</span> <span class="nav-text">定时器：setInterval()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关实例"><span class="nav-number">9.</span> <span class="nav-text">相关实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#封装动画函数（匀速、缓动（变速））"><span class="nav-number">9.1.</span> <span class="nav-text">封装动画函数（匀速、缓动（变速））</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#匀速的动画函数"><span class="nav-number">9.1.1.</span> <span class="nav-text">匀速的动画函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变速（缓动）的动画函数"><span class="nav-number">9.1.2.</span> <span class="nav-text">变速（缓动）的动画函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#筋斗云导航栏案例："><span class="nav-number">9.1.2.1.</span> <span class="nav-text">筋斗云导航栏案例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装缓动动画函数增加任意一个属性"><span class="nav-number">9.1.3.</span> <span class="nav-text">封装缓动动画函数增加任意一个属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装缓动动画函数增加任意多个属性"><span class="nav-number">9.1.4.</span> <span class="nav-text">封装缓动动画函数增加任意多个属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装缓动动画函数增加任意多个属性、回调函数：实现多个动画"><span class="nav-number">9.1.5.</span> <span class="nav-text">封装缓动动画函数增加任意多个属性、回调函数：实现多个动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在上面再增加透明度、层级（最终版本）"><span class="nav-number">9.1.6.</span> <span class="nav-text">在上面再增加透明度、层级（最终版本）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手风琴案例"><span class="nav-number">9.1.7.</span> <span class="nav-text">手风琴案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开、关机动画案例"><span class="nav-number">9.1.8.</span> <span class="nav-text">开、关机动画案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#旋转木马案例"><span class="nav-number">9.1.9.</span> <span class="nav-text">旋转木马案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#轮播图"><span class="nav-number">9.2.</span> <span class="nav-text">轮播图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单的轮播图"><span class="nav-number">9.2.1.</span> <span class="nav-text">简单的轮播图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#左右焦点轮播图"><span class="nav-number">9.2.2.</span> <span class="nav-text">左右焦点轮播图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无缝连接的轮播图（用到定时器）"><span class="nav-number">9.2.3.</span> <span class="nav-text">无缝连接的轮播图（用到定时器）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整的轮播图"><span class="nav-number">9.2.4.</span> <span class="nav-text">完整的轮播图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小实例："><span class="nav-number">9.3.</span> <span class="nav-text">小实例：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强制阅读协议按钮"><span class="nav-number">9.3.1.</span> <span class="nav-text">强制阅读协议按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#div渐变"><span class="nav-number">9.3.2.</span> <span class="nav-text">div渐变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动元素"><span class="nav-number">9.3.3.</span> <span class="nav-text">移动元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迂回移动元素、封装动画函数"><span class="nav-number">9.3.4.</span> <span class="nav-text">迂回移动元素、封装动画函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一起摇"><span class="nav-number">9.3.5.</span> <span class="nav-text">一起摇</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一闪一闪亮晶晶"><span class="nav-number">9.3.6.</span> <span class="nav-text">一闪一闪亮晶晶</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#美女图片时钟"><span class="nav-number">9.3.7.</span> <span class="nav-text">美女图片时钟</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="谢红斌"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">谢红斌</p>
+  <div class="site-description" itemprop="description">谢红斌个人网站-记录web前端学习的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hongbinxie" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hongbinxie" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谢红斌</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/schemes/love.js"></script>
+
+  
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

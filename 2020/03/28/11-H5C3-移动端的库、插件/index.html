@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="zepto（js库）jQuery.js     适用于pc zepto.js       适用于移动端 (轻量级)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11-H5C3-移动端的库、插件">
+<meta property="og:url" content="http://yoursite.com/2020/03/28/11-H5C3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E5%BA%93%E3%80%81%E6%8F%92%E4%BB%B6/index.html">
+<meta property="og:site_name" content="凝水为城">
+<meta property="og:description" content="zepto（js库）jQuery.js     适用于pc zepto.js       适用于移动端 (轻量级)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-28T12:57:36.877Z">
+<meta property="article:modified_time" content="2020-03-28T13:55:09.647Z">
+<meta property="article:author" content="谢红斌">
+<meta property="article:tag" content="HTML5">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/28/11-H5C3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E5%BA%93%E3%80%81%E6%8F%92%E4%BB%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>11-H5C3-移动端的库、插件 | 凝水为城</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+  
+<link rel="alternate" href="/atom.xml" title="凝水为城" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	
+	<a href="https://your-url" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凝水为城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">谢红斌的博客小栈</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/11-H5C3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E5%BA%93%E3%80%81%E6%8F%92%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="谢红斌">
+      <meta itemprop="description" content="谢红斌个人网站-记录web前端学习的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凝水为城">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          11-H5C3-移动端的库、插件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-28 20:57:36 / 修改时间：21:55:09" itemprop="dateCreated datePublished" datetime="2020-03-28T20:57:36+08:00">2020-03-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="zepto（js库）"><a href="#zepto（js库）" class="headerlink" title="zepto（js库）"></a>zepto（js库）</h1><p>jQuery.js     适用于pc</p>
+<p>zepto.js       适用于移动端 (轻量级)</p>
+<a id="more"></a>
+
+<p>相同点：<br>        api几乎差不多一样（会jQ，也就差不多会zepto，不用单独去学）<br>不同点：<br>    事件不同、体积不同</p>
+<!--more-->
+
+<p>注意:</p>
+<ul>
+<li><p>要用某些事件，必须要引入zepto的对应分支模块，否则显示no a function。引入哪些模块，去官网查</p>
+</li>
+<li><p>在移动端页面中使用click事件会有300毫秒的延迟</p>
+<ul>
+<li><p>用touch.js模块中的的tap代替，就没有延迟    </p>
+</li>
+<li><p>touch.js里的常用事件：</p>
+<p>swipeLeft<br>swipeRight<br>swipeUp<br>swipeDown</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="案例-移动端卡片册-fx模块"><a href="#案例-移动端卡片册-fx模块" class="headerlink" title="案例-移动端卡片册(fx模块)"></a>案例-移动端卡片册(fx模块)</h2><p>注意：zepto要用动画必须引入fx.js模块</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">	*&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="css">	<span class="selector-class">.container</span>&#123;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">width</span><span class="selector-pseudo">:100vw</span>;</span></span><br><span class="line">		height: 100vh;</span><br><span class="line">		overflow: hidden;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	ul&#123;</span><br><span class="line">		list-style: none;</span><br><span class="line">		transition: all 1s;//也可在animate()中加</span><br><span class="line">	&#125;</span><br><span class="line">	ul li&#123;</span><br><span class="line"><span class="css">		<span class="selector-tag">float</span><span class="selector-pseudo">:left</span>;</span></span><br><span class="line">		overflow: hidden;</span><br><span class="line"><span class="css">		<span class="selector-tag">width</span><span class="selector-pseudo">:100vw</span>;</span></span><br><span class="line">		height: 100vh;</span><br><span class="line">	&#125;</span><br><span class="line">	ul li img&#123;</span><br><span class="line"><span class="css">		<span class="selector-tag">width</span><span class="selector-pseudo">:100vw</span>;</span></span><br><span class="line">		height: 100vh;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'container'</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"2.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"3.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">ul</span>&gt;</span>	</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'zepto.min.js'</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'touch.js'</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'fx.js'</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> width = $(<span class="string">"li"</span>).first().width();</span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> liLen = $(<span class="string">"li"</span>).length;<span class="comment">//li个数</span></span></span><br><span class="line"><span class="javascript">	$(<span class="string">"ul"</span>).width(width*liLen);<span class="comment">//给ul设置宽度</span></span></span><br><span class="line">	</span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> index = <span class="number">0</span>;<span class="comment">//图片张数</span></span></span><br><span class="line"><span class="javascript">	$(<span class="string">"ul"</span>).on(<span class="string">"swipeLeft"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">		index++;</span><br><span class="line"><span class="actionscript">		<span class="keyword">if</span>(index&gt;=liLen)&#123;<span class="comment">//图片张数比li个数大就从第一张重新开始</span></span></span><br><span class="line">			index=0;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="javascript">		$(<span class="keyword">this</span>).animate(&#123;</span></span><br><span class="line"><span class="actionscript">			transform:<span class="string">'translateX(-'</span>+index*width+<span class="string">'px)'</span></span></span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">	$(<span class="string">"ul"</span>).on(<span class="string">"swipeRight"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">		index--;</span><br><span class="line">		if(index&lt;0)&#123;</span><br><span class="line">			index=liLen-1;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="javascript">		$(<span class="keyword">this</span>).animate(&#123;</span></span><br><span class="line"><span class="actionscript">			transform:<span class="string">'translateX(-'</span>+index*width+<span class="string">'px)'</span></span></span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="iscroll-js插件-列表滑动、区块滑动、上拉刷新、下拉加载等"><a href="#iscroll-js插件-列表滑动、区块滑动、上拉刷新、下拉加载等" class="headerlink" title="iscroll.js插件-列表滑动、区块滑动、上拉刷新、下拉加载等"></a>iscroll.js插件-列表滑动、区块滑动、上拉刷新、下拉加载等</h1><p>要引入iscroll.js</p>
+<p><strong>是什么？</strong></p>
+<pre><code>IScroll.js插件是兼容所有移动端滚动条事件的插件，在某些安卓机中，我们无法通过overflow:scroll这个css属性来出现滚动条；它也可以非常好的在一个容器元素中处理滚动;</code></pre><p><strong>举例？</strong></p>
+<p>比如你做了弹性盒布局，中间内容多就会把底部挤掉，用overflow:hidden;会导致中间内容不能继续看了，这就需要用到iscroll.js模块了</p>
+<p><strong>怎么用？</strong></p>
+<p>前提：下载、引入了</p>
+<ol>
+<li><p>要<strong>给滚动区域</strong>  加入一个  <strong>父元素</strong>。（原因：iscroll是给<strong>父元素的第一个元素节点</strong>添加滚动事件）</p>
+</li>
+<li><p>父元素的高度值要<strong>小于</strong>滚动区块的高度（否则无法在滚动区块滚动）——</p>
+<p>给父元素设</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">position</span>:relative;</span><br><span class="line">    <span class="attribute">overflow</span>:hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在JS中加入<code>new IScroll(&quot;.main&quot;);</code></p>
+</li>
+</ol>
+<p><strong>可设参数：</strong>可去百度看</p>
+<pre><code>new IScroll(&quot;.main&quot;,{...});
+
+scrollbars: true   是否显示滚动条。默认为false
+fadeScrollbars:true  滚动条淡入淡出效果(前提:滚动条显示了)。默认为false
+bounce: false   滚动到达容器边界时是否执行反弹动画。默认为true;
+click:true   (重要)iScroll禁止默认鼠标的点击行为，如果要使用设置true;默认为false;</code></pre><p><strong>案例的demo:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">*&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.container</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">width</span><span class="selector-pseudo">:100vw</span>;</span></span><br><span class="line">    height: 100vh;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">&#125;</span><br><span class="line">header,footer&#123;</span><br><span class="line"><span class="css">    <span class="selector-tag">background</span>: <span class="selector-id">#000</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">color</span>:<span class="selector-id">#fff</span>;</span></span><br><span class="line">    text-align: center;</span><br><span class="line">    line-height: 50px;</span><br><span class="line">&#125;</span><br><span class="line">section&#123;</span><br><span class="line"><span class="css">    <span class="selector-tag">flex</span><span class="selector-pseudo">:1</span>;</span></span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">ul li&#123;</span><br><span class="line"><span class="css">    <span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span>;</span></span><br><span class="line">    height: 100px;</span><br><span class="line">    line-height: 100px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.main</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">width</span><span class="selector-pseudo">:100</span>%;</span></span><br><span class="line">    height: 100%;</span><br><span class="line">    position: relative;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'container'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">header</span>&gt;</span>头部<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'main'</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>吴亦凡登英国《tmrw》封面<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>中央戏剧学院新生报到<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>范冰冰首次回应与李晨婚事<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>林妙可小短裙造型一言难尽<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>不老女神温碧霞穿连衣裙秀美腿<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>吴亦凡登英国《tmrw》封面<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>中央戏剧学院新生报到<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>范冰冰首次回应与李晨婚事<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>林妙可小短裙造型一言难尽<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span>不老女神温碧霞穿连衣裙秀美腿<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span>底部<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'iscroll.js'</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">new</span> IScroll(<span class="string">".main"</span>,&#123;</span></span><br><span class="line"><span class="actionscript">    scrollbars: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">    fadeScrollbars:<span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">    bounce: <span class="literal">false</span>,</span></span><br><span class="line"><span class="actionscript">    click:<span class="literal">true</span> </span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="swiper插件-图片切换、轮播"><a href="#swiper插件-图片切换、轮播" class="headerlink" title="swiper插件-图片切换、轮播"></a>swiper插件-图片切换、轮播</h1><blockquote>
+<p>用途：图片切换、轮播</p>
+</blockquote>
+<p>也叫滑动插件</p>
+<p>官网：<a href="https://www.swiper.com.cn/" target="_blank" rel="noopener">https://www.swiper.com.cn/</a></p>
+<p>可到官网查看有哪些滑动效果    </p>
+<p><strong>使用：</strong></p>
+<ol>
+<li>获取、引入swiper.js、swiper.css（如到官网，有文件下载、CDN、包管理下载）</li>
+<li>先把dom元素赋值：即用到它的div盒子，把图片放进去就好。（不需要自己去设置轮播样式）</li>
+<li>加new Swiper。（就可滑动了。不过若用的图片大小不一样，则你要再设下样式）</li>
+<li>设置功能（参数）<ul>
+<li>loop:true        循环</li>
+<li>autoplay:true         自动播放，默认3s一次</li>
+<li>分页器         要加入分页器：需要把盒子拿过来，再把Js对象拿过来。要设分页器样式，去检查点是哪加的，自定义覆盖掉，不要去改原文件。不想用小圆点，设type</li>
+</ul>
+</li>
+<li>解决掉块问题：不给高，给background、padding-bottom</li>
+</ol>
+<p><strong>demo演示</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">	*&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="css">	<span class="selector-class">.container</span>&#123;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">width</span><span class="selector-pseudo">:100vw</span>;</span></span><br><span class="line">		height: 100vh;</span><br><span class="line">		display: flex;</span><br><span class="line">		flex-direction: column;</span><br><span class="line">		overflow: hidden;</span><br><span class="line">	&#125;</span><br><span class="line">	header,footer&#123;</span><br><span class="line"><span class="css">		<span class="selector-tag">background</span>: <span class="selector-id">#000</span>;</span></span><br><span class="line">		line-height: 50px;</span><br><span class="line"><span class="css">		<span class="selector-tag">color</span>:<span class="selector-id">#fff</span>;</span></span><br><span class="line">		text-align: center;</span><br><span class="line">	&#125;</span><br><span class="line">	section&#123;</span><br><span class="line"><span class="css">		<span class="selector-tag">flex</span><span class="selector-pseudo">:1</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line">	ul&#123;</span><br><span class="line">		list-style: none;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="css">	<span class="selector-class">.swiper-wrapper</span>&#123;</span></span><br><span class="line">		width: 100%;</span><br><span class="line">		height: 0;</span><br><span class="line"><span class="css">		<span class="selector-tag">background</span>: <span class="selector-id">#ccc</span>;</span></span><br><span class="line">		padding-bottom: 50%;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="css">	<span class="selector-class">.swiper-slide</span> <span class="selector-tag">img</span>&#123;</span></span><br><span class="line">		width: 100%;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="css">	<span class="selector-class">.swiper-pagination-bullet-active</span>&#123;</span></span><br><span class="line">		background: orange;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'container'</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">header</span>&gt;</span>头部<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-container"</span>&gt;</span></span><br><span class="line">		  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-wrapper"</span>&gt;</span></span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/1.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">		    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/2.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">		    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/3.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">		    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-pagination"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">footer</span>&gt;</span>底部<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'swiper.min.js'</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">new</span> Swiper(<span class="string">'.swiper-container'</span>,&#123;</span></span><br><span class="line"><span class="actionscript">	loop:<span class="literal">true</span>,</span></span><br><span class="line">	pagination: &#123;</span><br><span class="line"><span class="actionscript">	   el: <span class="string">'.swiper-pagination'</span>,</span></span><br><span class="line"><span class="actionscript">	   type: <span class="string">'fraction'</span></span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="echo-js插件-图片懒加载-预加载"><a href="#echo-js插件-图片懒加载-预加载" class="headerlink" title="echo.js插件-图片懒加载(预加载)"></a>echo.js插件-图片懒加载(预加载)</h1><blockquote>
+<p>举例：</p>
+<p>如你有100张图片，用户只看了10张，但你还是要加载100张，就浪费了性能</p>
+<p>如百度图片，往下拖动，它在加载图片</p>
+<p>什么叫懒加载？即你用到时才加载</p>
+</blockquote>
+<p>使用:</p>
+<ol>
+<li><p>引入echo.js</p>
+</li>
+<li><p>在dom的图片节点上加入（src就不用了，也可以在src里加入另一张图片作为到图片位置时加载前显示的图片。原理：data-echo经过判断，来决定把图片是否放到src里）</p>
+<p><code>data-echo=&#39;要加载的图片路径&#39;</code></p>
+</li>
+<li><p><code>echo.init()</code>即可</p>
+</li>
+</ol>
+<p>demo:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    *&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</span></span><br><span class="line">    img&#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        height: 100px;</span><br><span class="line"><span class="css">        <span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span> <span class="selector-tag">auto</span>;</span></span><br><span class="line">        display: block;</span><br><span class="line"><span class="css">        <span class="selector-tag">background</span>: <span class="selector-id">#666</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-echo</span>=<span class="string">'1.jpg'</span> <span class="attr">src</span>=<span class="string">'to.png'</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'echo.min.js'</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">echo.init();</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HTML5/" rel="tag"># HTML5</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/28/10-H5C3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" rel="prev" title="10-H5C3响应式布局">
+      <i class="fa fa-chevron-left"></i> 10-H5C3响应式布局
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/28/01-CSS%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8less/" rel="next" title="01-CSS预处理器less">
+      01-CSS预处理器less <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zepto（js库）"><span class="nav-number">1.</span> <span class="nav-text">zepto（js库）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#案例-移动端卡片册-fx模块"><span class="nav-number">1.1.</span> <span class="nav-text">案例-移动端卡片册(fx模块)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iscroll-js插件-列表滑动、区块滑动、上拉刷新、下拉加载等"><span class="nav-number">2.</span> <span class="nav-text">iscroll.js插件-列表滑动、区块滑动、上拉刷新、下拉加载等</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swiper插件-图片切换、轮播"><span class="nav-number">3.</span> <span class="nav-text">swiper插件-图片切换、轮播</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#echo-js插件-图片懒加载-预加载"><span class="nav-number">4.</span> <span class="nav-text">echo.js插件-图片懒加载(预加载)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="谢红斌"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">谢红斌</p>
+  <div class="site-description" itemprop="description">谢红斌个人网站-记录web前端学习的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hongbinxie" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hongbinxie" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谢红斌</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/schemes/love.js"></script>
+
+  
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

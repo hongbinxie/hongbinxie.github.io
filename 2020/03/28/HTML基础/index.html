@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="浏览器内核浏览器是网页显示、运行的平台。  五大常用浏览器：  IE、火狐（Firefox）、谷歌（Chrome）、Safari、Opera。  常见的浏览器内核：  Trident、Gecko、Blink、Webkit。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML基础">
+<meta property="og:url" content="http://yoursite.com/2020/03/28/HTML%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="凝水为城">
+<meta property="og:description" content="浏览器内核浏览器是网页显示、运行的平台。  五大常用浏览器：  IE、火狐（Firefox）、谷歌（Chrome）、Safari、Opera。  常见的浏览器内核：  Trident、Gecko、Blink、Webkit。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/html%E8%BD%AC%E4%B9%89%E7%AC%A61.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/html%E8%BD%AC%E4%B9%89%E7%AC%A62.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/imgAtt.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/zifu.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/dl-Exa.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/tableAtt.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/inputAtt.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/iconfont1.png">
+<meta property="article:published_time" content="2020-03-28T12:40:32.823Z">
+<meta property="article:modified_time" content="2020-03-28T13:48:27.133Z">
+<meta property="article:author" content="谢红斌">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/html%E8%BD%AC%E4%B9%89%E7%AC%A61.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/28/HTML%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>HTML基础 | 凝水为城</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+  
+<link rel="alternate" href="/atom.xml" title="凝水为城" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	
+	<a href="https://your-url" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凝水为城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">谢红斌的博客小栈</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/HTML%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="谢红斌">
+      <meta itemprop="description" content="谢红斌个人网站-记录web前端学习的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凝水为城">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-28 20:40:32 / 修改时间：21:48:27" itemprop="dateCreated datePublished" datetime="2020-03-28T20:40:32+08:00">2020-03-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h1><p>浏览器是网页显示、运行的平台。</p>
+<ul>
+<li>五大常用浏览器：</li>
+</ul>
+<p>IE、火狐（Firefox）、谷歌（Chrome）、Safari、Opera。</p>
+<ul>
+<li>常见的浏览器内核：</li>
+</ul>
+<p>Trident、Gecko、Blink、Webkit。</p>
+<a id="more"></a>
+
+<blockquote>
+<p>Trident（IE、很多国内浏览器内核）</p>
+<p>Gecko（Firefox内核）</p>
+<p>webkit（Safari苹果浏览器、以前的chrome内核）</p>
+<p>Chromium/Blink（chrome内核，是webkit的二次开发）</p>
+<p>安卓、苹果手机：webkit内核</p>
+<p>WP7手机：Trident</p>
+</blockquote>
+<h1 id="html转义符"><a href="#html转义符" class="headerlink" title="html转义符"></a>html转义符</h1><p><img src="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/html%E8%BD%AC%E4%B9%89%E7%AC%A61.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/html%E8%BD%AC%E4%B9%89%E7%AC%A62.png" alt=""></p>
+<h1 id="web标准"><a href="#web标准" class="headerlink" title="web标准"></a>web标准</h1><blockquote>
+<p>出现原因：各浏览器内核不同，工作原理、解析也就不同，导致显示上会有差异，所以代码要符合Web标准。</p>
+</blockquote>
+<p>组成：结构、表现、行为。</p>
+<ul>
+<li>结构：有哪些内容。主要用HTML</li>
+<li>表现：内容的外观样式，主要用CSS</li>
+<li>行为：内容的交互，主要用JavaScript</li>
+</ul>
+<h1 id="html骨架"><a href="#html骨架" class="headerlink" title="html骨架"></a>html骨架</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		...</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTML的单行、多行注释：<span class="comment">&lt;!-- --&gt;</span>	</span><br><span class="line">CSS的单行、多行注释：/* */</span><br><span class="line">JS单行注释：//</span><br><span class="line">JS多行注释：/* */</span><br></pre></td></tr></table></figure>
+
+<h1 id="html标签"><a href="#html标签" class="headerlink" title="html标签"></a>html标签</h1><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>（不懂时可查）</p>
+<p>W3C : <a href="http://www.w3school.com.cn/" target="_blank" rel="noopener">http://www.w3school.com.cn/</a></p>
+<p>MDN: <a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/</a></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>标签的属性值：用” “括起，不加单位！</li>
+<li>尽量不使用 样式属性！</li>
+<li>表格不是用来布局，常用于  处理、显示表格式数据</li>
+</ul>
+<h2 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h2><h3 id="标签语义化"><a href="#标签语义化" class="headerlink" title="标签语义化"></a>标签语义化</h3><p>即在合适的地方放上合适的标签。</p>
+<p>遵循原则：先确定语义的HTML ，再选合适的CSS。</p>
+<blockquote>
+<p>原因：</p>
+<ol>
+<li>方便代码的阅读和维护</li>
+<li>同时让浏览器或是网络爬虫可以很好地解析，从而更好分析其中的内容 </li>
+<li>使用语义化标签会具有更好地搜索引擎优化</li>
+</ol>
+</blockquote>
+<h3 id="标签的关系"><a href="#标签的关系" class="headerlink" title="标签的关系"></a>标签的关系</h3><p>有2种：</p>
+<p>父子关系（嵌套）、兄弟关系（并列）</p>
+<h3 id="标签的分类"><a href="#标签的分类" class="headerlink" title="标签的分类"></a>标签的分类</h3><p>有3种分类方式。</p>
+<ul>
+<li><p>有无 <strong>语义</strong></p>
+<ul>
+<li>有语义标签（元素）：骨架结构标签；排版标签h,p,hr,br；文本格式化标签；图像标签img；链接标签a，base；特殊字符标签；列表标签；表格标签；表单标签共9种</li>
+<li>无语义标签（div、span）：块级标签。一般：需要一行只放一个元素用div，需要一行放好几个元素用span</li>
+</ul>
+</li>
+<li><p>是否 <strong>成对</strong></p>
+<ul>
+<li>单标签有：hr、br、img、base、meta、input</li>
+<li>其余为双标签</li>
+</ul>
+</li>
+<li><p>按 <strong>显示模式</strong> 分：块、行、行内块</p>
+</li>
+</ul>
+<h3 id="块标签"><a href="#块标签" class="headerlink" title="块标签"></a>块标签</h3><ul>
+<li>常见：h、p、div、ul、ol、li</li>
+<li>作用：常用于搭建网页<strong>布局、结构</strong>。</li>
+<li>特点：<ul>
+<li>每个块标签单独占据一整行或多整行</li>
+<li>可设置宽、高、对齐、内外边距等属性。</li>
+<li>默认宽度：容器的100%</li>
+<li>容纳内联标签、其他块标签（p、h文字类块标签不能放块级元素）</li>
+<li>不可以看作文本</li>
+</ul>
+</li>
+</ul>
+<h3 id="行内标签"><a href="#行内标签" class="headerlink" title="行内标签"></a>行内标签</h3><blockquote>
+<p>也叫内敛标签。</p>
+</blockquote>
+<ul>
+<li><p>常见：a、strong、b、em、i、del、s、ins、u、span</p>
+</li>
+<li><p>作用：常用于  控制页面中<strong>文本样式</strong>。</p>
+</li>
+<li><p>特点：</p>
+<ul>
+<li>不占有独立的区域：和相邻行内元素在一行上。</li>
+<li><strong>靠本身内容</strong>来支撑结构：高、宽、对齐等属性无效，只<strong>水平方向的padding、margin</strong>有效</li>
+<li>默认宽度：本身内容  的宽度</li>
+<li>容纳文本、其他行内元素（a特殊，但a里不能放a）</li>
+<li>可以看作文本</li>
+</ul>
+</li>
+</ul>
+<h3 id="行内块元素"><a href="#行内块元素" class="headerlink" title="行内块元素"></a>行内块元素</h3><p>特殊的行内元素</p>
+<ul>
+<li>常见：img、input 、td</li>
+<li>特点：<ul>
+<li><strong>主要特点：可以对它们设置宽高、对齐、外内边距等</strong></li>
+<li>和相邻行内元素（行内块）在一行上,<strong>但是之间有空白缝隙</strong></li>
+<li>默认宽度：本身内容  的宽度。</li>
+<li>可以看作文本</li>
+</ul>
+</li>
+</ul>
+<h2 id="具体内容"><a href="#具体内容" class="headerlink" title="具体内容"></a>具体内容</h2><h3 id="骨架结构标签"><a href="#骨架结构标签" class="headerlink" title="骨架结构标签"></a>骨架结构标签</h3><p>主要</p>
+<ul>
+<li>html：文档根</li>
+<li>head：文档头部(描述文档信息，必须有title)</li>
+<li>title：文档标题</li>
+<li>body：文档主体(存放页面内容)</li>
+</ul>
+<p>补充：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE  <span class="meta-keyword">html</span>&gt;</span>	文档类型</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span>  <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span>    字符集属性（通常使用UTF-8 字符集）</span><br><span class="line">注释    ``</span><br></pre></td></tr></table></figure>
+
+<h3 id="排版标签h-p-hr-br"><a href="#排版标签h-p-hr-br" class="headerlink" title="排版标签h,p,hr,br"></a>排版标签h,p,hr,br</h3><p>h:    页面标题（块级标签。 h1:只给logo、页面中最重要标题信息用。h1-h6：尺寸从大到小，  权重从高到低）</p>
+<p>p:    段落（块级元素。会根据浏览器窗口的大小 自动换行。不要用p标签来插入空行）</p>
+<p>hr:    水平线。（单标签）</p>
+<p>br:    换行。（不要用br标签创建列表）</p>
+<h3 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h3><p>b、strong    粗体（强调时才用后者）</p>
+<p>i、em    斜体（强调时才用后者）</p>
+<p>s、del    删除线（强调时才用后者）</p>
+<p>u、ins    加下划线（强调时才用后者）</p>
+<h3 id="图像标签img"><a href="#图像标签img" class="headerlink" title="图像标签img"></a>图像标签img</h3><p>img的属性：</p>
+<p><img src="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/imgAtt.png" alt=""></p>
+<h3 id="链接标签a、base"><a href="#链接标签a、base" class="headerlink" title="链接标签a、base"></a>链接标签a、base</h3><table>
+<thead>
+<tr>
+<th>标签名</th>
+<th>作用</th>
+<th>属性</th>
+<th>注意</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td>链接</td>
+<td>href：指定链接的地址（href=”#”表示空链接）                                                                target：链接目标的弹出方式（常用值：<em>blank、</em>self；                                                  name：规定锚的名称。（可用 name 属性创建 HTML 页面中的<strong>书签</strong>。用#来跳转到name同名位置）</td>
+<td>锚点定位（做书签）的方法</td>
+</tr>
+<tr>
+<td><base  /></td>
+<td>设置整体链接的打开状态</td>
+<td>target：链接目标的弹出方式（常用值：<em>blank、</em>self；</td>
+<td>在head部写。优先级比标签自身属性低</td>
+</tr>
+</tbody></table>
+<p><strong>锚点定位</strong>                                                                </p>
+<p>通过创建锚点链接，用户能够快速定位到目标内容。   </p>
+<p>步骤1：创建锚点（被点击的）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#id名"</span>&gt;</span>锚点文本<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>步骤2：（使用锚点的id名）设置定位目标</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">"two"</span>&gt;</span>第2集<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="特殊字符标签"><a href="#特殊字符标签" class="headerlink" title="特殊字符标签"></a>特殊字符标签</h3><p><img src="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/zifu.png" alt=""></p>
+<h3 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h3><p>无序列表：ul、li</p>
+<p>有序列表：ol、li</p>
+<p>自定义列表：dl、dt名词、dd名词解释（列表项前没有任何项目符号）</p>
+<p>自定义列表常用来：</p>
+<img src="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/dl-Exa.png"/>
+
+<h3 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h3><blockquote>
+<p>注意：表格不是用来布局，常用于  处理、显示表格式数据</p>
+</blockquote>
+<p>有以下标签：table表格、thead标题区域、tbody表主体区域、caption表格标题、tr表行、th表头、td单元格</p>
+<p>用法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">caption</span>&gt;</span>...<span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>...<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>...<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>..<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>...<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>...<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>表的属性：</p>
+<p><img src="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/tableAtt.png" alt=""></p>
+<p><strong>合并单元格（重点）</strong></p>
+<p>跨行合并：rowspan </p>
+<p>跨列合并：colspan</p>
+<h3 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h3><blockquote>
+<p>注意：每个表单都应该有自己的表单域。</p>
+</blockquote>
+<p>标签：</p>
+<table>
+<thead>
+<tr>
+<th>标签名</th>
+<th>作用</th>
+<th>具体、属性、注意</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><from></td>
+<td>表单域</td>
+<td>建一个表单，以实现用户信息的收集和传递，form中的所有内容都会被提交给服务器。                                                                                                                                  格式：<form  action="提交的地址" method="提交方式" name="表单名称">   各种表单控件  </form>                                                                                                                              提交方式：get公开、post安全性高。</td>
+</tr>
+<tr>
+<td><input  /></td>
+<td>输入框控件</td>
+<td>input：image图片按钮</td>
+</tr>
+<tr>
+<td><strong>label</strong></td>
+<td>为控件定义标注</td>
+<td>用于绑定一个表单元素, 当点击label标签的时候, 被绑定的表单元素就会获得输入焦点</td>
+</tr>
+<tr>
+<td>textarea</td>
+<td>文本域控件</td>
+<td>用来输入大量的信息。直接给宽、高，不要用属性：cols、rows。</td>
+</tr>
+<tr>
+<td>select</td>
+<td>下拉菜单</td>
+<td>注意：                                                                                                                                           1.<select></select>中至少应包含一对<option></option>。                                                             2.在option 中定义selected =” selected “时，当前项即为默认选中项。</td>
+</tr>
+</tbody></table>
+<p>input属性：</p>
+<p><img src="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/inputAtt.png" alt=""></p>
+<h1 id="🔺常用技巧"><a href="#🔺常用技巧" class="headerlink" title="🔺常用技巧"></a>🔺常用技巧</h1><h2 id="锚点定位（做书签）"><a href="#锚点定位（做书签）" class="headerlink" title="锚点定位（做书签）"></a>锚点定位（做书签）</h2><p>通过创建锚点链接，用户能够快速定位到目标内容。   </p>
+<p>步骤1：创建锚点（被点击的）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"#id名"</span>&gt;</span>锚点文本<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>步骤2：（使用锚点的id名）设置定位目标</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">"two"</span>&gt;</span>第2集<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="icon图标"><a href="#icon图标" class="headerlink" title="icon图标"></a>icon图标</h1><p>网页标题中的图标</p>
+<ul>
+<li><p>使用icon图标</p>
+<p>1.先保存到根目录中</p>
+<p>2.在html中的head中输入</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link <span class="attribute">rel</span>=<span class="string">"shortcut icon"</span> <span class="attribute">href</span>=<span class="string">"favicon.ico"</span> <span class="attribute">type</span>=<span class="string">"image/x-icon"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>type可以省略</p>
+</li>
+<li><p>如何拿到别人的icon图标</p>
+<p>打开域名/favicon.icon，另存为图片，名字不要改，保存到根目录</p>
+</li>
+</ul>
+<h1 id="图标字体"><a href="#图标字体" class="headerlink" title="图标字体"></a>图标字体</h1><blockquote>
+<p>电脑中字体一般放在C：//windows/fonts中</p>
+<p>UI人员怎么设计的图标字体？</p>
+<ul>
+<li>用矢量图形软件：illustrator、Sketch </li>
+<li>在软件里创建 icon图标，保存为svg图给前端。</li>
+<li>前端把图（上传到某些网站或自己转换）转换成兼容性图标字体</li>
+</ul>
+</blockquote>
+<p>网页设计中特殊的字体</p>
+<ul>
+<li><p>特点：</p>
+<ul>
+<li>本质仍是文字，可以很随意的改变颜色、产生阴影、透明效果等</li>
+<li>可以做出跟图片一样可以做的事情,改变透明度、旋转度等</li>
+</ul>
+</li>
+</ul>
+<h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><blockquote>
+<p>注意：icomoon文件夹不能丢</p>
+</blockquote>
+<ol>
+<li><p>拿图（从网上、UI设计师那。若是svg格式，转换成字体：上传到某些网站转换   或  自己转换）</p>
+</li>
+<li><p>引入</p>
+<ol>
+<li><p>把fonts文件夹放入网站目录中。</p>
+</li>
+<li><p>在样式里声明字体：粘贴固定的格式</p>
+</li>
+<li><p>先复制fonts目录下的demo.html中图标字体下的方框图片或</p>
+<p>代码如i::before{content:       “\e900”;}，</p>
+<p>再给标签使用字体font-family。</p>
+</li>
+</ol>
+</li>
+<li><p>怎么追加新图标到原来的库里面？</p>
+</li>
+</ol>
+<p>把原icomoon文件夹里面的selection.json 重新上传，选yes。</p>
+<p>然后，选中新图标，重新下载压缩包，替换原来文件即可。</p>
+<h2 id="推荐网站"><a href="#推荐网站" class="headerlink" title="推荐网站"></a>推荐网站</h2><p>1.推荐网站： <a href="http://icomoon.io" target="_blank" rel="noopener">http://icomoon.io</a></p>
+<p><strong>icomoon</strong>字库 <strong>最提倡使用！</strong></p>
+<p>IcoMoon成立于2011年，推出的第一个自定义图标字体生成器，它允许用户选择他们所需要的图标，使它们成一字型。 内容种类繁多，非常全面，唯一的遗憾是国外服务器，打开网速较慢。</p>
+<p>使用：①点iconmoon app</p>
+<p>②</p>
+<p><img src="https://raw.githubusercontent.com/hongbinxie/pic-bad/master/img/iconfont1.png" alt=""></p>
+<p>2.推荐网站： <a href="http://www.iconfont.cn/" target="_blank" rel="noopener">http://www.iconfont.cn/</a></p>
+<p><strong>icon font字库</strong></p>
+<p><a href="http://www.iconfont.cn/" target="_blank" rel="noopener">http://www.iconfont.cn/</a></p>
+<p>这个是阿里妈妈M2UX的一个icon font字体图标字库，包含了淘宝图标库和阿里妈妈图标库。可以使用AI制作图标上传生成。 一个字，免费，免费！！</p>
+<p><strong>fontello</strong></p>
+<p><a href="http://fontello.com/" target="_blank" rel="noopener">http://fontello.com/</a></p>
+<p>在线定制你自己的icon font字体图标字库，也可以直接从GitHub下载整个图标集，该项目也是开源的。</p>
+<p><strong>Font-Awesome</strong></p>
+<p><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="noopener">http://fortawesome.github.io/Font-Awesome/</a></p>
+<p>这是我最喜欢的字库之一了，更新比较快。目前已经有369个图标了。</p>
+<p><strong>Glyphicon Halflings</strong></p>
+<p><a href="http://glyphicons.com/" target="_blank" rel="noopener">http://glyphicons.com/</a></p>
+<p>这个字体图标可以在Bootstrap下免费使用。自带了200多个图标。</p>
+<p><strong>Icons8</strong></p>
+<p><a href="https://icons8.com/" target="_blank" rel="noopener">https://icons8.com/</a></p>
+<p>提供PNG免费下载，像素大能到500PX</p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HTML/" rel="tag"># HTML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/11/Webpack%E7%AC%94%E8%AE%B0/" rel="prev" title="Webpack笔记">
+      <i class="fa fa-chevron-left"></i> Webpack笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/28/06-H5%E9%9F%B3%E9%A2%91%E3%80%81%E8%A7%86%E9%A2%91/" rel="next" title="06-H5音频、视频">
+      06-H5音频、视频 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器内核"><span class="nav-number">1.</span> <span class="nav-text">浏览器内核</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#html转义符"><span class="nav-number">2.</span> <span class="nav-text">html转义符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web标准"><span class="nav-number">3.</span> <span class="nav-text">web标准</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#html骨架"><span class="nav-number">4.</span> <span class="nav-text">html骨架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注释"><span class="nav-number">5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#html标签"><span class="nav-number">6.</span> <span class="nav-text">html标签</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">6.2.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解"><span class="nav-number">6.3.</span> <span class="nav-text">了解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标签语义化"><span class="nav-number">6.3.1.</span> <span class="nav-text">标签语义化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签的关系"><span class="nav-number">6.3.2.</span> <span class="nav-text">标签的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签的分类"><span class="nav-number">6.3.3.</span> <span class="nav-text">标签的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块标签"><span class="nav-number">6.3.4.</span> <span class="nav-text">块标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行内标签"><span class="nav-number">6.3.5.</span> <span class="nav-text">行内标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行内块元素"><span class="nav-number">6.3.6.</span> <span class="nav-text">行内块元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体内容"><span class="nav-number">6.4.</span> <span class="nav-text">具体内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#骨架结构标签"><span class="nav-number">6.4.1.</span> <span class="nav-text">骨架结构标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排版标签h-p-hr-br"><span class="nav-number">6.4.2.</span> <span class="nav-text">排版标签h,p,hr,br</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本格式化标签"><span class="nav-number">6.4.3.</span> <span class="nav-text">文本格式化标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像标签img"><span class="nav-number">6.4.4.</span> <span class="nav-text">图像标签img</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接标签a、base"><span class="nav-number">6.4.5.</span> <span class="nav-text">链接标签a、base</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊字符标签"><span class="nav-number">6.4.6.</span> <span class="nav-text">特殊字符标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表标签"><span class="nav-number">6.4.7.</span> <span class="nav-text">列表标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表格标签"><span class="nav-number">6.4.8.</span> <span class="nav-text">表格标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单标签"><span class="nav-number">6.4.9.</span> <span class="nav-text">表单标签</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#🔺常用技巧"><span class="nav-number">7.</span> <span class="nav-text">🔺常用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#锚点定位（做书签）"><span class="nav-number">7.1.</span> <span class="nav-text">锚点定位（做书签）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#icon图标"><span class="nav-number">8.</span> <span class="nav-text">icon图标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图标字体"><span class="nav-number">9.</span> <span class="nav-text">图标字体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么使用"><span class="nav-number">9.1.</span> <span class="nav-text">怎么使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐网站"><span class="nav-number">9.2.</span> <span class="nav-text">推荐网站</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="谢红斌"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">谢红斌</p>
+  <div class="site-description" itemprop="description">谢红斌个人网站-记录web前端学习的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hongbinxie" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hongbinxie" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谢红斌</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/schemes/love.js"></script>
+
+  
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="官网http:&#x2F;&#x2F;nodejs.cn&#x2F; Node是什么？Node.js 是环境。一个基于 Chrome V8 引擎的 JS运行 环境。 该环境里的JS操作ECMA(ECMAscript)。  该环境里的js不能操作BOM、DOM。BOM、DOM是浏览器的  Node的优势高并发：处理单一服务器时更好 io密集：文件操作、网络操作、数据库更好（指web端方面，不是指服务器端） 安装Node(环境搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01-Node.js">
+<meta property="og:url" content="http://yoursite.com/2020/03/29/01-Node.js/index.html">
+<meta property="og:site_name" content="凝水为城">
+<meta property="og:description" content="官网http:&#x2F;&#x2F;nodejs.cn&#x2F; Node是什么？Node.js 是环境。一个基于 Chrome V8 引擎的 JS运行 环境。 该环境里的JS操作ECMA(ECMAscript)。  该环境里的js不能操作BOM、DOM。BOM、DOM是浏览器的  Node的优势高并发：处理单一服务器时更好 io密集：文件操作、网络操作、数据库更好（指web端方面，不是指服务器端） 安装Node(环境搭建">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-29T14:42:20.904Z">
+<meta property="article:modified_time" content="2020-03-29T15:05:56.494Z">
+<meta property="article:author" content="谢红斌">
+<meta property="article:tag" content="Node">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/29/01-Node.js/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>01-Node.js | 凝水为城</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+  
+<link rel="alternate" href="/atom.xml" title="凝水为城" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	
+	<a href="https://your-url" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凝水为城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">谢红斌的博客小栈</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/01-Node.js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="谢红斌">
+      <meta itemprop="description" content="谢红斌个人网站-记录web前端学习的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凝水为城">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          01-Node.js
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-29 22:42:20 / 修改时间：23:05:56" itemprop="dateCreated datePublished" datetime="2020-03-29T22:42:20+08:00">2020-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>官网<a href="http://nodejs.cn/" target="_blank" rel="noopener">http://nodejs.cn/</a></p>
+<h2 id="Node是什么？"><a href="#Node是什么？" class="headerlink" title="Node是什么？"></a>Node是什么？</h2><p><strong><em>Node</em>.<em>js</em> 是环境</strong>。一个基于 Chrome V8 引擎的 <strong>JS运行 环境</strong>。</p>
+<p>该环境里的JS操作<strong>ECMA</strong>(ECMAscript)。</p>
+<blockquote>
+<p>该环境里的js不能操作BOM、DOM。BOM、DOM是浏览器的</p>
+</blockquote>
+<h2 id="Node的优势"><a href="#Node的优势" class="headerlink" title="Node的优势"></a>Node的优势</h2><p>高并发：处理单一服务器时更好</p>
+<p>io密集：文件操作、网络操作、数据库更好（指web端方面，不是指服务器端）</p>
+<h2 id="安装Node-环境搭建"><a href="#安装Node-环境搭建" class="headerlink" title="安装Node(环境搭建)"></a>安装Node(环境搭建)</h2><p>node就是环境，只安装它就行。</p>
+<blockquote>
+<p>node会自带npm安装，不用去单独安装npm。(npm是包管理)</p>
+</blockquote>
+<p>1.官网下载好，一路下一步即可。</p>
+<p>2.安装测试：node -v和npm -v</p>
+<p>3.试用测试：随便写个js，<strong>进入该目录中</strong>用cmd或git bash执行它<strong>node xx.js;</strong>，无误即可。</p>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="CommonJS规范-模块化"><a href="#CommonJS规范-模块化" class="headerlink" title="CommonJS规范(模块化)"></a>CommonJS规范(模块化)</h2><blockquote>
+<p>CommonJS最大特点：模块化。</p>
+</blockquote>
+<ul>
+<li>每一个文件都是一个模块，都有自己的作用域。(如a.js、b.js都是一个模块)</li>
+<li>在模块内部，module代表自身。</li>
+<li><strong>引出：</strong>模块中module.exports提供对外接口。(如b要用a里的变量，a的module.exports提供一个对外接口module.exports.变量。b如何去用接口也是关键)</li>
+</ul>
+<p>require语法(引入)</p>
+<ul>
+<li>/代表绝对路径, ./代表相对路径</li>
+<li>默认后缀: js json node。（即执行时可不写这些后缀，会自动依次去找。若都没有，报错。）</li>
+<li>require(‘…’) ==&gt;会引用node_modules目录里的文件</li>
+</ul>
+<h3 id="重要操作：模块间的抛出与引入"><a href="#重要操作：模块间的抛出与引入" class="headerlink" title="重要操作：模块间的抛出与引入"></a>重要操作：模块间的抛出与引入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模块间的引出与引入:b引用a的内容</span></span><br><span class="line"><span class="comment">//a.js</span></span><br><span class="line"><span class="keyword">var</span> t1 = <span class="number">888</span>;</span><br><span class="line"><span class="keyword">var</span> t2 = <span class="number">999</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"fn1"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.t1 = t1;</span><br><span class="line"><span class="built_in">module</span>.exports.fn1 = fn1;</span><br><span class="line"><span class="comment">//b.js</span></span><br><span class="line"><span class="keyword">var</span> mod = <span class="built_in">require</span>(<span class="string">'./a'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(mod.t1);</span><br><span class="line">mod.fn1();</span><br></pre></td></tr></table></figure>
+
+<h2 id="全局对象global"><a href="#全局对象global" class="headerlink" title="全局对象global"></a>全局对象global</h2><blockquote>
+<p>浏览器的全局对象：window</p>
+</blockquote>
+<p>node走ECMAscript语法，它的全局对象是global</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模块间的引出与引入:b引用a的内容+全局对象</span></span><br><span class="line"><span class="comment">//a.js</span></span><br><span class="line"><span class="keyword">var</span> t1 = <span class="number">888</span>;</span><br><span class="line">global.t2 = <span class="number">999</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"fn1"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.t1 = t1;</span><br><span class="line"><span class="built_in">module</span>.exports.fn1 = fn1;</span><br><span class="line"><span class="comment">//b.js</span></span><br><span class="line"><span class="keyword">var</span> mod = <span class="built_in">require</span>(<span class="string">'./a'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(mod.t1);</span><br><span class="line"><span class="built_in">console</span>.log(t2);</span><br><span class="line">mod.fn1();</span><br></pre></td></tr></table></figure>
+
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><h3 id="npm介绍"><a href="#npm介绍" class="headerlink" title="npm介绍"></a>npm介绍</h3><p>包管理器</p>
+<p>作用：让js开发者下载别人写的包。也可上传自己写的包。</p>
+<p>优势：集中管理包，方便查询下载。（如项目中用到轮播插件swiper，用搜索引擎或进它官网找不难。但项目中要用到秒杀插件、倒计时插件等，搜索引擎难找好的，就可去npm包看下。）</p>
+<h3 id="npm常用命令"><a href="#npm常用命令" class="headerlink" title="npm常用命令"></a>npm常用命令</h3><p>npm -v    查看版本</p>
+<p>npm init    初始化项目</p>
+<p>npm install xxx    下载包</p>
+<p>npm list    查看所有包</p>
+<p>命令大全<a href="https://www.3mooc.com/front/articleinfo/98" target="_blank" rel="noopener">https://www.3mooc.com/front/articleinfo/98</a></p>
+<h3 id="npm下载-包"><a href="#npm下载-包" class="headerlink" title="npm下载 包"></a>npm下载 包</h3><p>如npm install xxx下载完包后，项目目录会出现node_modules文件夹，里面除了包的文件夹，其它都是相关依赖。</p>
+<p>测试包下载成功：拿文件去引用包输入下面代码，node运行。</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">express</span> = require('<span class="built_in">express</span>');</span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">express</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><blockquote>
+<p>当npm init初始化后，会在项目目录生成package.json文件。</p>
+</blockquote>
+<p>是npm包信息。</p>
+<p>是和node_modules相辅相成的：如github很多项目没有node_modules目录，项目跑不起来——但有package，在项目目录中运行npm install，就会把项目的所有依赖都下载到node_modules里。</p>
+<p>信息有：包的名称、版本、依赖等。</p>
+<h3 id="cnmp淘宝镜像"><a href="#cnmp淘宝镜像" class="headerlink" title="cnmp淘宝镜像"></a>cnmp淘宝镜像</h3><p>npm国外的，速度慢；</p>
+<p>cnpm国内的</p>
+<p>安装命令：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> install -g cnpm --registry=https://registry.<span class="built_in">npm</span>.taobao.org</span><br></pre></td></tr></table></figure>
+
+<h1 id="重要操作"><a href="#重要操作" class="headerlink" title="重要操作"></a>重要操作</h1><h2 id="http创建Node服务器"><a href="#http创建Node服务器" class="headerlink" title="http创建Node服务器"></a>http创建Node服务器</h2><blockquote>
+<p>php要跑起来有apache的支持，而Node就有http的支持</p>
+<p>Node中的http模块：是内置的系统模块，无需下载。</p>
+<p>http.server是一个基于事件的http服务器，内部c++封装实现，接口JS实现</p>
+</blockquote>
+<p>在项目目录建个server.js，输入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);	<span class="comment">//引入http模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;	<span class="comment">//创建服务器。参数1：封装了客户端请求，参数2：封装了服务器响应</span></span><br><span class="line">	res.write(<span class="string">"1111"</span>);	<span class="comment">//响应输出</span></span><br><span class="line">	res.end();			<span class="comment">//响应结束，每次都要写</span></span><br><span class="line">&#125;)						<span class="comment">//&#125;).listen(8080);</span></span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8080</span>);	<span class="comment">//监听端口。或在server的）后.调用，来连写</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：会写一个比较大的端口，因为默认80经常会有各种各样的问题</p>
+<p>先不运行该文件，进入localhost:8080会报错。再运行即可。</p>
+<h2 id="get请求url数据的操作"><a href="#get请求url数据的操作" class="headerlink" title="get请求url数据的操作"></a>get请求url数据的操作</h2><blockquote>
+<p>如果前台发出get请求，那后台如何拿到数据，解析格式呢？</p>
+<p>get是路径传值，可通过req.url去拿到</p>
+</blockquote>
+<p>方法1：得到路径req.url 、引入url模块、url.parse(reqUrl,<strong>true</strong>).query拿到query</p>
+<p>方法2：不用写true，引入querystring模块、querystring.parse(…)</p>
+<blockquote>
+<p>具体看这：</p>
+<p>一、拿到数据：</p>
+<p>先创建前台页面index.html、server.js创建Node服务器</p>
+<p><strong>拿到url数据：req.url</strong></p>
+<p>进入项目目录，命令行运行server.js启动服务器，再点击链接，命令行里拿到了数据。</p>
+<p>数据是字符串不对，应该拿到json数据对象</p>
+<p>二、拿到正确的数据</p>
+<p>引入url模块。（它实质是个对象）</p>
+<p>引入url模块的方法parse。（方法parse会拿到对象格式，对象中的query值接近正确数据）</p>
+<p>添加第二个参数：true。（就显示了正确的对象数据）</p>
+<p>追加.query.title。（拿到对象的值）</p>
+</blockquote>
+<h2 id="get请求表单数据的操作"><a href="#get请求表单数据的操作" class="headerlink" title="get请求表单数据的操作"></a>get请求表单数据的操作</h2><p>其它操作跟上节一样。这儿注意表单的输入框必须加name属性，否则url上不会添加。</p>
+<p>客户端打印要加表头转换编码res.writeHead(200,{“Content-Type”:”text/html;charset=utf8”})</p>
+<blockquote>
+<p>创建前台</p>
+<p>创建服务器</p>
+<p>通过get请求url数据的操作，拿到了表单数据。</p>
+<p>页面显示数据。res.end(“用户名:”+formVal.userName+”—–&gt;”+”密码:”+formVal.userPwd);。（有乱码）</p>
+<p>转换。res.writeHead(200,{“Content-Type”:”text/html;charset=utf8”})</p>
+</blockquote>
+<h2 id="post请求表单数据的操作"><a href="#post请求表单数据的操作" class="headerlink" title="post请求表单数据的操作"></a>post请求表单数据的操作</h2><blockquote>
+<p>不能操作url请求，因为post数据不会显示在url上。</p>
+<p>操作post：事件接收    2个事件：req.on(‘data’)    每次发送的数据；req.on(‘end’)    数据发送完成</p>
+</blockquote>
+<p>req.on(‘data’,(chunk)=&gt;{})    参数代表每次的数据，去生成个变量去{}做+=即可。这是过程，在这打印没有用。</p>
+<p>req.on(‘data’,()=&gt;{})    这是结果，一定是在结果里打出完整用户输入内容。{}里可做操作：打印、响应结束</p>
+<p>转换格式：引入模块querystring，通过querystring.parse打印变量。</p>
+<blockquote>
+<p>创建前台页面、创建Node服务器</p>
+</blockquote>
+<h2 id="通过Node连接mysql、查询内容"><a href="#通过Node连接mysql、查询内容" class="headerlink" title="通过Node连接mysql、查询内容"></a>通过Node连接mysql、查询内容</h2><blockquote>
+<p>前提：</p>
+<p>1.下载mysql：<a href="https://www.3mooc.com/front/articleinfo/99到官网或百度官网，点击下载社区版的第一个Download按钮" target="_blank" rel="noopener">https://www.3mooc.com/front/articleinfo/99到官网或百度官网，点击下载社区版的第一个Download按钮</a></p>
+<p>2.novicat数据库管理工具连接mysql，新建数据库实例：库-&gt;表-&gt;字段</p>
+</blockquote>
+<p>写代码：</p>
+<p>1.在目录中下载mysql包npm install mysql</p>
+<p>2.引入mysql模块</p>
+<p>3.配置mysql信息（默认端口3306，端口可不写。主机名：novicat连接时的ip：如localhost）</p>
+<p>4.连接</p>
+<p>5.进行什么查询操作（增删改查）</p>
+<p>6.关闭</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  host     : <span class="string">'主机名'</span>,</span><br><span class="line">  user     : <span class="string">'用户名'</span>,</span><br><span class="line">  password : <span class="string">'密码'</span>,</span><br><span class="line">  database : <span class="string">'库名称'</span>,</span><br><span class="line">  port     : <span class="string">'端口号'</span><span class="comment">//可不写</span></span><br><span class="line">&#125;);</span><br><span class="line">connection.connect();	<span class="comment">//连接</span></span><br><span class="line">connection.query(<span class="string">'select * from 表名称'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;<span class="comment">//数据库操作函数。查询(增删改查)完后返回的结果：错误信息、结果、字段数据</span></span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">  <span class="built_in">console</span>.log(results)</span><br><span class="line">&#125;);</span><br><span class="line">connection.end();	<span class="comment">//查询完关闭</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p>创建前台：登录页面</p>
+<p>创建服务器：拿到post表单数据</p>
+<p>连接数据库，<strong>条件查询</strong>信息。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="keyword">from</span> 表名称：查询所有</span><br><span class="line">select * <span class="keyword">from</span> 表名称 where <span class="attribute">userName</span>=? <span class="keyword">and</span> <span class="attribute">userPwd</span>=?</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connection.query(<span class="string">'select * from 表名称 where userName=? and userPwd=?'</span>,[第一个?,第二个?],<span class="function"><span class="params">(err,results,fields)</span>=&gt;</span>&#123;		//<span class="number">3</span>个参数：查询语句、数组、函数</span><br><span class="line">	</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>和数据库里的内容对比。查到对应的返回成功，不对应则返回失败</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(results.length &gt;<span class="number">0</span>)&#123;</span><br><span class="line">	res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">"text/html;charset=utf8"</span>&#125;)</span><br><span class="line">	res.<span class="built_in">write</span>(<span class="string">'登录成功'</span>)</span><br><span class="line">	res.<span class="keyword">end</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>创建前台：注册页面</p>
+<p>捋一下逻辑，如何去做内容：</p>
+<p>​    1.首先要拿到用户输入的内容：通过http创建服务器、事件操作拿到post数据</p>
+<p>​    2.然后放到数据库中：连接数据库、执行增语句、过程中有些问题到写时再看。而不是查删改语句了</p>
+<p>要点——</p>
+<p>​    1.增语句：insert into 表名称 value (100,123,456)    id、userName、userPwd</p>
+<p>​    2.http会把网页图标也拿过来，导致每次拿数据，会多一行：要阻止它拿，如何操作呢？问题在于req.url，打印它查看为/favicon.icon。所以要先进行判定，req.url不为图标时才拿过来</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">if</span>(req.url!=<span class="string">'/favicon.icon'</span>)&#123;</span><br><span class="line">	......</span><br><span class="line">    <span class="selector-tag">connection</span><span class="selector-class">.query</span>(<span class="string">'insert into user value (?,?,?)'</span>,[<span class="number">0</span>,userName,userPwd],(err,results,fields)=&gt;&#123;	<span class="comment">//因为id是自增长的，所以用0表示默认自增长</span></span><br><span class="line">                    <span class="selector-tag">if</span>(err) <span class="selector-tag">throw</span> <span class="selector-tag">err</span>;</span><br><span class="line">                    <span class="selector-tag">res</span><span class="selector-class">.write</span>(<span class="string">"注册成功！！！"</span>);</span><br><span class="line">                    <span class="selector-tag">res</span><span class="selector-class">.end</span>();</span><br><span class="line">    &#125;)</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：数据库特性。如数据库内容id为11的数据删了，那下一条它的id则会从12开始。</p>
+<h1 id="express框架"><a href="#express框架" class="headerlink" title="express框架"></a>express框架</h1><p>一个基于node.js的web应用开发<strong>框架</strong>。</p>
+<p>建议使用webstrom开发工具：操作项目时更方便、更快捷。</p>
+<h2 id="express目录结构"><a href="#express目录结构" class="headerlink" title="express目录结构"></a>express目录结构</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bin</span><br><span class="line">		www  <span class="comment">===》启动文件【入口文件】</span></span><br><span class="line">app.js   <span class="comment">===》全局配置文件</span></span><br><span class="line">node_modules	<span class="comment">===》项目依赖的包文件</span></span><br><span class="line">routers  <span class="comment">===》路由的配置</span></span><br><span class="line">views    <span class="comment">===》页面</span></span><br><span class="line">public   <span class="comment">===》静态资源  【css、img、js】</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1.www中里面有端口号、连接到app.js全局配置文件等。（微信小程序的app.js也是全局配置文件）</p>
+<p>2.关于访问页面：</p>
+<p>过程——www给<strong>端口</strong>、引入app.js=&gt;连接到app.js，引入routes=&gt;routes，引入views，<strong>路由配置</strong>指定页面=&gt;打开视图views里的页面.ejs文件，里面有模板语法。页面中可以放入public里的资源</p>
+</blockquote>
+<h2 id="创建express项目"><a href="#创建express项目" class="headerlink" title="创建express项目"></a>创建express项目</h2><p>1.webstorm-new-project-选择Node.js EXpress App-选择项目目录-<strong>Template选择EJS模板</strong>-创建(-yes-this windows)-等待安装完毕即可。</p>
+<p>2.运行框架：菜单-run-Run bin/www弹出端口号-打开浏览器访问地址-进到express欢迎界面</p>
+<blockquote>
+<p>了解</p>
+<p>1.模板引擎：有模板语句</p>
+<p>如php中有模板引擎smarty好用。express里也有模板引擎EJS好用</p>
+<p>2.创建完会生成一个完整的工程目录，当然一些东西需要大家去填。但基本框架给你搭好了</p>
+<p>3.如何知道端口：在项目目录/bin/www，这是启动文件</p>
+</blockquote>
+<h2 id="express路由操作"><a href="#express路由操作" class="headerlink" title="express路由操作"></a>express路由操作</h2><p>1.先到app.js引入路由（require()）、给一级路径分配路由(app.use())</p>
+<p>2.再到routes里新建或修改.js配置路由（进行输入res.send或渲染res.render）、用键值定义模板语法中的内容，如(res.render(‘index’),{tite:’标题’,msg:’这是xxx信息’});。</p>
+<p>3.再到views里新建或修改.ejs，用模板语法写页面去渲染。</p>
+<p>二级路径直接在对应一级路径的.js下配置路由</p>
+<h2 id="引入静态资源和ejs模板语法"><a href="#引入静态资源和ejs模板语法" class="headerlink" title="引入静态资源和ejs模板语法"></a>引入静态资源和ejs模板语法</h2><p>引入静态资源</p>
+<p>1.放到对应目录中</p>
+<p>2.views里的对应.ejs引入资源。注意路径：<strong>前面加/</strong>，如</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">"/image/1.png"</span> <span class="attribute">alt</span>=<span class="string">""</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>模板语法：</p>
+<p>(1)内容</p>
+<p>1.定义内容：到对应.js中输入。如</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">res.render</span>(<span class="symbol">'index</span>'),&#123; </span><br><span class="line">	tite:<span class="symbol">'标题</span>',</span><br><span class="line">	msg:<span class="symbol">'这是xxx信息</span>'</span><br><span class="line">&#125;)<span class="comment">;。</span></span><br></pre></td></tr></table></figure>
+
+<p>2.输出内容：到对应.ejs中输出。如&lt;%= title %&gt;，注意：<strong>=代表输出内容，，没有=代表js语句</strong></p>
+<p>(2)JS语句</p>
+<p>1.定义内容：如</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">res.render</span>(<span class="symbol">'index</span>'),&#123; </span><br><span class="line">	tite:<span class="symbol">'标题</span>',</span><br><span class="line">	msg:<span class="symbol">'这是xxx信息</span>',</span><br><span class="line">	arr:[<span class="symbol">'a</span>',<span class="symbol">'b</span>',<span class="symbol">'c</span>']</span><br><span class="line">&#125;)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.输出js语句：&lt;% %&gt;，先把js语句写好再整理模板避免出错。如</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">%</span> <span class="attr">arr.forEach</span>((<span class="attr">ietm</span>)=&gt;</span>&#123; %&gt;</span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">item</span> %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">%</span> &#125;) %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="开发项目的基本流程"><a href="#开发项目的基本流程" class="headerlink" title="开发项目的基本流程"></a>开发项目的基本流程</h2><blockquote>
+<p>这是基本流程，实际做时还要根据情况进行梳理。</p>
+</blockquote>
+<p>1.设计数据库</p>
+<p>表、结构、字段都要设计得比较完美，添加数据（之后才开始做，后面若需求变或哪儿需要添加字段，到时候再添加）</p>
+<p>2.封装连接库、连接数据库</p>
+<blockquote>
+<p>可在笔记中ctrl+f搜索封装连接库能找到怎么封装、怎么连接</p>
+</blockquote>
+<p>因为项目中很多地方都需要连接mysql，供后期方便使用：封装后查看哪需要连接数据库，引入封装连接库，就可.query进行数据库操作了。其次才是正常的业务逻辑调整</p>
+<p>3.各功能的业务逻辑</p>
+<blockquote>
+<p>创建后台的静态页面可以在做功能时写，也可以先写好或找写好的。</p>
+</blockquote>
+<h2 id="项目1：express做简单的后台内容管理系统"><a href="#项目1：express做简单的后台内容管理系统" class="headerlink" title="项目1：express做简单的后台内容管理系统"></a>项目1：express做简单的后台内容管理系统</h2><p>这儿没做前台，只做了后台。</p>
+<blockquote>
+<p>基本流程</p>
+<p>0.设计数据库：因为是教程，所以设计数据库是写到哪一块再创建哪一块，如做到登陆，就创建用户表。</p>
+<p>0.创建后台的静态页面可以在做功能时写，也可以先写好</p>
+<p>1.做登录功能：需要输入用户名、密码登录，才能进入该后台页面</p>
+<p>2..做管理功能：做去增删改查等查询操作</p>
+</blockquote>
+<p>1.创建项目、运行项目测试是否正常</p>
+<p>2.引入配置路由文件(.js)：到app.js中require</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var indexRouter</span> = require(<span class="string">'./routes/index'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>配置该文件的路径：到app.js中app.use。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">app</span><span class="selector-class">.use</span>(<span class="string">'/admin'</span>,indexRouter);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>删除user的require、app.use，没用</p>
+</blockquote>
+<p>4.修改完刷新，测试表单。查看是否配置路由成功。localhost:端口号/admin</p>
+<p>5.编写后台页面。编写前先到对应.js文件删除模板定义内容参数，有用时再编写。</p>
+<p>以下是各页面的编写。</p>
+<h3 id="后台的登录页面"><a href="#后台的登录页面" class="headerlink" title="后台的登录页面"></a>后台的登录页面</h3><p>要点：路径、登陆</p>
+<blockquote>
+<p>登录表单index.ejs</p>
+</blockquote>
+<p>1.写静态</p>
+<p>2.写路径：先想下希望跳转的页面</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">localhost:</span><span class="number">3000</span>/admin	登录表单</span><br><span class="line"><span class="symbol">localhost:</span><span class="number">3000</span><span class="meta-keyword">/admin/</span>main	希望跳转的页面</span><br></pre></td></tr></table></figure>
+
+<p>所以action里写/admin/main。注意前面有/。</p>
+<p>写完测试是否跳转。</p>
+<p>3.实现登陆功能：输入什么才能登陆</p>
+<blockquote>
+<p>创建数据库，创建用户表user，里字段id、userName、userPwd。</p>
+<p>封装连接库：</p>
+<p>1.在项目根目录新建一个js文件sql.js，把数据库配置都放到这，后期直接query就可以了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = require(<span class="string">'mysql'</span>); <span class="comment">//引入mysql模块</span></span><br><span class="line"><span class="keyword">var</span> db =mysql.createConnection(&#123;</span><br><span class="line">	host:<span class="string">""</span>,</span><br><span class="line">	user:<span class="string">""</span>,</span><br><span class="line">	password:<span class="string">""</span>,</span><br><span class="line">	database:<span class="string">""</span></span><br><span class="line">&#125;);	<span class="comment">//配置相关信息</span></span><br><span class="line"></span><br><span class="line">db.connect();	<span class="comment">//连接数据库</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = db;	<span class="comment">//全局的抛出去,千万别写成局部的module.exports.db = db;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2.在项目里下载mysql</p>
+<p>3.封装后去看哪需要连接数据库，去连接</p>
+<p>这儿index.js需要连接，引入封装连接库，然后通过.query即可操作</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var db</span> = require(<span class="string">"../sql.js"</span>);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>（1）配置post</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">"/main"</span>,<span class="function"><span class="keyword">function</span><span class="params">(req,res,next)</span></span>&#123;	<span class="comment">//post数据要到的地方：/main</span></span><br><span class="line">	...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>写完代码后，在连接里输入res.end(“11”);。进入登陆页面随便输入点登录，跳转到main：NotFound，而数据库已添加了11；刷新项目后再第二次登陆，页面显示11，证明配置成功。</p>
+<p>（2）拿到用户输入的内容</p>
+<blockquote>
+<p>没有express之前，post数据要用事件接受。</p>
+<p>而express中封装了过程：直接用req.body即可。在webstorm里就可看到post数据了。</p>
+</blockquote>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">"/main"</span>,<span class="function"><span class="keyword">function</span><span class="params">(req,res,next)</span></span>&#123;	<span class="comment">//post数据对应的地方：/main</span></span><br><span class="line">	 <span class="keyword">var</span> val = req.body;</span><br><span class="line">	 <span class="keyword">var</span> userName = val.userName;</span><br><span class="line">	 <span class="keyword">var</span> userPwd = val.userPwd;</span><br><span class="line">	 </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>（3）作比较：查询数据库内容，把用户内容去作比较</p>
+<p>先连接数据库：引入封装连接库文件：var db = require(“../sql.js”);</p>
+<p>直接可以.query进行数据库操作</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">db.query(<span class="string">'select * from user where userName=? and userPwd=?'</span>,[userName,userPwd],<span class="function"><span class="keyword">function</span><span class="params">(err,data)</span>&#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(err)&#123;	<span class="comment">//先进行判断</span></span><br><span class="line">		throw err;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(data.<span class="built_in">length</span>&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		res.<span class="keyword">end</span>(<span class="string">"111"</span>);	<span class="comment">//登陆成功之后，肯定是跳转一个页面的：通过res.render("");可以渲染.但因为我们要找html模板所以先写到这</span></span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		res.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content"</span>:<span class="string">"text/html;charset=utf8"</span>&#125;);</span><br><span class="line">		res.<span class="keyword">end</span>(<span class="string">"登陆失败"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="后台主页渲染"><a href="#后台主页渲染" class="headerlink" title="后台主页渲染"></a>后台主页渲染</h3><blockquote>
+<p>做登录以后的页面的展示</p>
+<p>上一节最后我们是让主页显示111：res.end(“111”);。应该写res.render(“”);去渲染一个页面。</p>
+</blockquote>
+<p>1.想好渲染哪个静态页面？</p>
+<p>这里渲染的主页是一个index.html</p>
+<p>到view里新建个main.ejs，把静态页面的代码复制到这。填好了：res.render(“main”);。</p>
+<p>刷新访问，发现有变化即成功。</p>
+<p>2.改静态页面：改成路由路径    </p>
+<blockquote>
+<p>改了多少页面路径，就要配置多少路由、路径、多少js、多少ejs</p>
+</blockquote>
+<p>查看main.ejs</p>
+<p>把页面路径都改好，改成路由形式，不用写后缀：/…    如src=“/top”</p>
+<p>3.配置好路由和路径、创建js文件、创建ejs文件</p>
+<p>配置路由、指定路径：到app.js中配置,如</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> topRouter = <span class="keyword">require</span>(<span class="string">'./routes/top'</span>);</span><br><span class="line"><span class="params">...</span></span><br><span class="line">app.use(<span class="string">'top'</span>,topRouter);</span><br></pre></td></tr></table></figure>
+
+<p>创建js文件：在routes里创建，代码跟user.js一样，复制过来。改成res.render(“…”); user.js没有用了就把他删掉。</p>
+<p>创建ejs文件：在view里创建，把对应页面的静态代码复制过来</p>
+<p>4.引入静态资源、改路径（注意前面加/）</p>
+<h3 id="菜系管理页面渲染"><a href="#菜系管理页面渲染" class="headerlink" title="菜系管理页面渲染"></a>菜系管理页面渲染</h3><blockquote>
+<p>其它管理功能类似，这儿就不做了</p>
+<p>把页面调整对了，再到数据库进行增删改查啥的</p>
+</blockquote>
+<p>1.改静态页面：改成路由路径    </p>
+<p>2.创建.ejs</p>
+<p>3.调整路由</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> topRouter = <span class="keyword">require</span>(<span class="string">'./routes/top'</span>);</span><br><span class="line"><span class="params">...</span></span><br><span class="line">app.use(<span class="string">'top'</span>,topRouter);</span><br></pre></td></tr></table></figure>
+
+<p>4.创建.js、res.render(“”);渲染哪个页面</p>
+<p>5.引入静态资源</p>
+<p>6.点击跳转这些后面改。</p>
+<h3 id="菜系管理-添加-查询"><a href="#菜系管理-添加-查询" class="headerlink" title="菜系管理-添加-查询"></a>菜系管理-添加-查询</h3><p>如点添加——</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>改静态页面：改成路由路径</span><br><span class="line"><span class="number">2.</span>调整路由</span><br><span class="line"><span class="number">3.</span>创建ejs</span><br><span class="line"><span class="number">4.</span>创建js、渲染</span><br><span class="line"><span class="number">5.</span>引入静态资源</span><br></pre></td></tr></table></figure>
+
+<p>页面调整好后，接下来做往数据库增的操作：</p>
+<p>1.找到对应ejs里的表单在哪增：改action，注意前面加/</p>
+<p>2.调整路由</p>
+<p>3.创建js，注意是post请求方式、res.end(“添加中……”);</p>
+<p>4.往数据库添加什么？需要拿到表单里的name</p>
+<p>先测试能不能拿到</p>
+<figure class="highlight pony"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="meta">val</span> = req.body;</span><br><span class="line"><span class="keyword">var</span> cuisineName = <span class="meta">val</span>.cuisineName;</span><br><span class="line">res.<span class="keyword">end</span>(<span class="string">"cuisineName"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>接下来用数据库增语句放到数据库中</p>
+<blockquote>
+<p>创建表cuisineList，字段id、cuisineName，添加一行数据</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.先连接数据库</span></span><br><span class="line"><span class="keyword">var</span> db = <span class="built_in">require</span>(<span class="string">"../sql.js"</span>);</span><br><span class="line"><span class="comment">//2.到router.post里进行判断</span></span><br><span class="line"><span class="keyword">if</span>(cuisineName!=<span class="string">''</span>)&#123;</span><br><span class="line">	db.query(<span class="string">'insert into cuisineList value (?,?)'</span>,[<span class="number">0</span>,cuisineName],<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(err)&#123;</span><br><span class="line">			<span class="keyword">throw</span> err;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			res.end(<span class="string">"添加成功"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	res.end(<span class="string">"输入内容不能为空"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试：看添加成功或失败的响应，数据库的数据变化。测试成功</p>
+<p>到ejs的对应位置删除静态数据，注释一组等会参考，使它变成活的：</p>
+<p>1.先测试下有没数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.query(<span class="string">'select * from cuisineList'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(err)&#123;</span><br><span class="line">			<span class="keyword">throw</span> err;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(data);		<span class="comment">//测试完换回渲染</span></span><br><span class="line">			<span class="comment">//res.render("cuisineList");</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>有数据后，需要把数据返回过去：返回到cuisineList.ejs中，让页面能拿到对应数据:</p>
+<p>js中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">res</span><span class="selector-class">.render</span>("<span class="selector-tag">cuisineList</span>",&#123;<span class="attribute">cuisineList</span>:data&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>ejs中对应位置，测试能否拿到数据</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= cuisineList %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>拿到后，ejs中改成</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;% cuisineList.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123; %&gt;	</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td&gt;&lt;% item.id %&gt;&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">	&lt;td&gt;&lt;% item.cuisineName %&gt;&lt;/</span>td&gt;</span><br><span class="line">&lt;<span class="regexp">/tr&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125;) %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>测试，成功后再添加条数据测试。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Node/" rel="tag"># Node</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/29/06-Socket.io/" rel="prev" title="06-Socket.io">
+      <i class="fa fa-chevron-left"></i> 06-Socket.io
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/29/01-Vue%E5%9F%BA%E7%A1%80/" rel="next" title="01-Vue基础">
+      01-Vue基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node是什么？"><span class="nav-number">1.</span> <span class="nav-text">Node是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node的优势"><span class="nav-number">2.</span> <span class="nav-text">Node的优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Node-环境搭建"><span class="nav-number">3.</span> <span class="nav-text">安装Node(环境搭建)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number"></span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJS规范-模块化"><span class="nav-number">1.</span> <span class="nav-text">CommonJS规范(模块化)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重要操作：模块间的抛出与引入"><span class="nav-number">1.1.</span> <span class="nav-text">重要操作：模块间的抛出与引入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局对象global"><span class="nav-number">2.</span> <span class="nav-text">全局对象global</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NPM"><span class="nav-number">3.</span> <span class="nav-text">NPM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#npm介绍"><span class="nav-number">3.1.</span> <span class="nav-text">npm介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm常用命令"><span class="nav-number">3.2.</span> <span class="nav-text">npm常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm下载-包"><span class="nav-number">3.3.</span> <span class="nav-text">npm下载 包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#package-json"><span class="nav-number">3.4.</span> <span class="nav-text">package.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cnmp淘宝镜像"><span class="nav-number">3.5.</span> <span class="nav-text">cnmp淘宝镜像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重要操作"><span class="nav-number"></span> <span class="nav-text">重要操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http创建Node服务器"><span class="nav-number">1.</span> <span class="nav-text">http创建Node服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get请求url数据的操作"><span class="nav-number">2.</span> <span class="nav-text">get请求url数据的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get请求表单数据的操作"><span class="nav-number">3.</span> <span class="nav-text">get请求表单数据的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post请求表单数据的操作"><span class="nav-number">4.</span> <span class="nav-text">post请求表单数据的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过Node连接mysql、查询内容"><span class="nav-number">5.</span> <span class="nav-text">通过Node连接mysql、查询内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录"><span class="nav-number">6.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册"><span class="nav-number">7.</span> <span class="nav-text">注册</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#express框架"><span class="nav-number"></span> <span class="nav-text">express框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#express目录结构"><span class="nav-number">1.</span> <span class="nav-text">express目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建express项目"><span class="nav-number">2.</span> <span class="nav-text">创建express项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#express路由操作"><span class="nav-number">3.</span> <span class="nav-text">express路由操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引入静态资源和ejs模板语法"><span class="nav-number">4.</span> <span class="nav-text">引入静态资源和ejs模板语法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战"><span class="nav-number"></span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发项目的基本流程"><span class="nav-number">1.</span> <span class="nav-text">开发项目的基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目1：express做简单的后台内容管理系统"><span class="nav-number">2.</span> <span class="nav-text">项目1：express做简单的后台内容管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后台的登录页面"><span class="nav-number">2.1.</span> <span class="nav-text">后台的登录页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台主页渲染"><span class="nav-number">2.2.</span> <span class="nav-text">后台主页渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#菜系管理页面渲染"><span class="nav-number">2.3.</span> <span class="nav-text">菜系管理页面渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#菜系管理-添加-查询"><span class="nav-number">2.4.</span> <span class="nav-text">菜系管理-添加-查询</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="谢红斌"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">谢红斌</p>
+  <div class="site-description" itemprop="description">谢红斌个人网站-记录web前端学习的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hongbinxie" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hongbinxie" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谢红斌</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/schemes/love.js"></script>
+
+  
+	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
