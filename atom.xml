@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-29T15:02:09.396Z</updated>
+  <updated>2020-03-29T16:06:10.453Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,21 +21,12 @@
     <link href="http://yoursite.com/2020/03/29/02-Typora/"/>
     <id>http://yoursite.com/2020/03/29/02-Typora/</id>
     <published>2020-03-29T14:42:20.966Z</published>
-    <updated>2020-03-29T15:02:09.396Z</updated>
+    <updated>2020-03-29T16:06:10.453Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;有导出成各种类型文件功能。&lt;/p&gt;
+      &lt;p&gt;有导出成各种类型文件功能。&lt;/p&gt;
 &lt;p&gt;markdown编辑器支持插入HTML5，可以把HTML5放进来、很多网站的api嵌入到里面。&lt;/p&gt;
-&lt;p&gt;图床：简书也有&lt;/p&gt;
-&lt;p&gt;也可以在csdn里编辑，然后复制或保存草稿来做笔记。&lt;/p&gt;
-&lt;p&gt;具体看教程，不需都记住只
-        
-      
     
     </summary>
     
@@ -52,17 +43,19 @@
     <link href="http://yoursite.com/2020/03/29/01-Git/"/>
     <id>http://yoursite.com/2020/03/29/01-Git/</id>
     <published>2020-03-29T14:42:20.951Z</published>
-    <updated>2020-03-29T15:06:29.496Z</updated>
+    <updated>2020-03-29T16:04:57.793Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;了解&quot;&gt;&lt;a href=&quot;#了解&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h1 id=&quot;了解&quot;&gt;&lt;a href=&quot;#了解&quot; class=&quot;headerlink&quot; title=&quot;了解&quot;&gt;&lt;/a&gt;了解&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;版本控制：解决多人开发的过程，容易引起文件冲突。如svn、git&lt;/li&gt;
+&lt;li&gt;git的优势：具有svn的功能、具有互联网的特性、git有分支概念&lt;/li&gt;
+&lt;li&gt;git和github：&lt;ul&gt;
+&lt;li&gt;git客户端    github服务器端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;git可将文件提交、下载到github上。git也可独立使用&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -79,21 +72,18 @@
     <link href="http://yoursite.com/2020/03/29/02-Vue%20CLI/"/>
     <id>http://yoursite.com/2020/03/29/02-Vue%20CLI/</id>
     <published>2020-03-29T14:42:20.933Z</published>
-    <updated>2020-03-29T15:04:16.350Z</updated>
+    <updated>2020-03-29T16:06:19.725Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;blockquote&gt;
+      &lt;blockquote&gt;
 &lt;p&gt;这是Vue-CLI的笔记，但也会复习下之前的Vue基础&lt;/p&gt;
 &lt;p&gt;1、官网：如有不懂，搜索对应工具官网 来查询具体哪个的使用&lt;/p&gt;
 &lt;p&gt;2、建议：打开git bash或cmd来输入命令。&lt;/p&gt;
-&lt;p&gt;​           
-        
-      
+&lt;p&gt;​            淘宝镜像cnpm比npm快&lt;/p&gt;
+&lt;p&gt;3、注意：若输入命令后不动、无反应，可能跟网速有关。&lt;/p&gt;
+&lt;p&gt;4、稍微了解webpack的话，就知道npm run serve命令在package.json中运行的是”serve”: “vue-cli-service serve”。若改成”vue-cli-service serve –open”：表示自动打开浏览器。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -110,17 +100,14 @@
     <link href="http://yoursite.com/2020/03/29/01-Vue%E5%9F%BA%E7%A1%80/"/>
     <id>http://yoursite.com/2020/03/29/01-Vue%E5%9F%BA%E7%A1%80/</id>
     <published>2020-03-29T14:42:20.916Z</published>
-    <updated>2020-03-29T15:05:45.194Z</updated>
+    <updated>2020-03-29T16:05:31.559Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;MVC模式和MVVM模式&quot;&gt;&lt;a href=&quot;#MVC模式和MVVM模式&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h1 id=&quot;MVC模式和MVVM模式&quot;&gt;&lt;a href=&quot;#MVC模式和MVVM模式&quot; class=&quot;headerlink&quot; title=&quot;MVC模式和MVVM模式&quot;&gt;&lt;/a&gt;MVC模式和MVVM模式&lt;/h1&gt;&lt;p&gt;1、MVC模式：&lt;/p&gt;
+&lt;p&gt;Model——》模型——》数据（js变量）&lt;/p&gt;
+&lt;p&gt;View——》视图——》用户所见界面（HTML，CSS）&lt;/p&gt;
+&lt;p&gt;Control——》控制器——》事件交互——》如何根据视图与用户交互后改变数据（通过DOM对象1绑定事件，将变量进行修改）&lt;/p&gt;
     
     </summary>
     
@@ -137,18 +124,13 @@
     <link href="http://yoursite.com/2020/03/29/01-Node.js/"/>
     <id>http://yoursite.com/2020/03/29/01-Node.js/</id>
     <published>2020-03-29T14:42:20.904Z</published>
-    <updated>2020-03-29T15:05:56.494Z</updated>
+    <updated>2020-03-29T16:05:15.779Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;官网&lt;a href=&quot;http://nodejs.cn/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://nodejs.cn/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Node是什么？&quot;&gt;&lt;a href=&quot;#Node是什么？&quot;
-        
-      
+      &lt;p&gt;官网&lt;a href=&quot;http://nodejs.cn/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://nodejs.cn/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Node是什么？&quot;&gt;&lt;a href=&quot;#Node是什么？&quot; class=&quot;headerlink&quot; title=&quot;Node是什么？&quot;&gt;&lt;/a&gt;Node是什么？&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Node&lt;/em&gt;.&lt;em&gt;js&lt;/em&gt; 是环境&lt;/strong&gt;。一个基于 Chrome V8 引擎的 &lt;strong&gt;JS运行 环境&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;该环境里的JS操作&lt;strong&gt;ECMA&lt;/strong&gt;(ECMAscript)。&lt;/p&gt;
     
     </summary>
     
@@ -165,18 +147,11 @@
     <link href="http://yoursite.com/2020/03/29/06-Socket.io/"/>
     <id>http://yoursite.com/2020/03/29/06-Socket.io/</id>
     <published>2020-03-29T14:42:20.872Z</published>
-    <updated>2020-03-29T15:02:47.994Z</updated>
+    <updated>2020-03-29T16:07:08.119Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;在看该文档前，建议先看下Node.js。&lt;/p&gt;
-&lt;h2 id=&quot;什么是Socket-IO&quot;&gt;&lt;a href=&quot;#什么是Socket-IO&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;在看该文档前，建议先看下Node.js。&lt;/p&gt;
     
     </summary>
     
@@ -193,19 +168,13 @@
     <link href="http://yoursite.com/2020/03/29/05-AjAX/"/>
     <id>http://yoursite.com/2020/03/29/05-AjAX/</id>
     <published>2020-03-29T14:42:20.836Z</published>
-    <updated>2020-03-29T15:03:14.321Z</updated>
+    <updated>2020-03-29T16:06:58.786Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;产生背景：没有对比就没有伤害，如过去的上传/下载/延迟速度。&lt;/p&gt;
+      &lt;p&gt;产生背景：没有对比就没有伤害，如过去的上传/下载/延迟速度。&lt;/p&gt;
 &lt;p&gt;用谷歌来模拟不同网速下的网站加载速率：&lt;/p&gt;
-&lt;p&gt;Network-&amp;gt;右上的下标Add…-&amp;gt;Add custom
-        
-      
+&lt;p&gt;Network-&amp;gt;右上的下标Add…-&amp;gt;Add custom profile…-&amp;gt;文件名、上传/下载/延迟速度-&amp;gt;返回点右上下标中的该文件名，可以在该模式测试当前网页加载速度。&lt;/p&gt;
     
     </summary>
     
@@ -222,18 +191,11 @@
     <link href="http://yoursite.com/2020/03/29/04-MySQL/"/>
     <id>http://yoursite.com/2020/03/29/04-MySQL/</id>
     <published>2020-03-29T14:42:20.805Z</published>
-    <updated>2020-03-29T15:03:30.316Z</updated>
+    <updated>2020-03-29T16:06:49.877Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;主要目的&quot;&gt;&lt;a href=&quot;#主要目的&quot; class=&quot;headerlink&quot; title=&quot;主要目的&quot;&gt;&lt;/a&gt;主要目的&lt;/h2&gt;&lt;p&gt;学习数据库怎么安装、怎么使用、怎么通过代码的方式去操作它。&lt;/p&gt;
-&lt;h2 id=&quot;什么是数据库&quot;&gt;&lt;a
-        
-      
+      &lt;h2 id=&quot;主要目的&quot;&gt;&lt;a href=&quot;#主要目的&quot; class=&quot;headerlink&quot; title=&quot;主要目的&quot;&gt;&lt;/a&gt;主要目的&lt;/h2&gt;&lt;p&gt;学习数据库怎么安装、怎么使用、怎么通过代码的方式去操作它。&lt;/p&gt;
     
     </summary>
     
@@ -250,18 +212,11 @@
     <link href="http://yoursite.com/2020/03/29/03-PHP/"/>
     <id>http://yoursite.com/2020/03/29/03-PHP/</id>
     <published>2020-03-29T14:42:20.789Z</published>
-    <updated>2020-03-29T15:03:52.480Z</updated>
+    <updated>2020-03-29T16:06:39.561Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;在看该笔记前，要先看动态网页站开发基础&lt;/p&gt;
-&lt;h2 id=&quot;注意&quot;&gt;&lt;a href=&quot;#注意&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;在看该笔记前，要先看动态网页站开发基础&lt;/p&gt;
     
     </summary>
     
@@ -278,17 +233,11 @@
     <link href="http://yoursite.com/2020/03/29/02-HTTP/"/>
     <id>http://yoursite.com/2020/03/29/02-HTTP/</id>
     <published>2020-03-29T14:42:20.731Z</published>
-    <updated>2020-03-29T15:04:46.250Z</updated>
+    <updated>2020-03-29T16:05:50.283Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;回顾：请求响应过程（web工作流程）&quot;&gt;&lt;a href=&quot;#回顾：请求响应过程（web工作流程）&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;回顾：请求响应过程（web工作流程）&quot;&gt;&lt;a href=&quot;#回顾：请求响应过程（web工作流程）&quot; class=&quot;headerlink&quot; title=&quot;回顾：请求响应过程（web工作流程）&quot;&gt;&lt;/a&gt;回顾：请求响应过程（web工作流程）&lt;/h2&gt;&lt;p&gt;了解整个WEB是怎样运转的？从浏览器输入一个地址发起对网站的请求整个过程发生了什么？&lt;/p&gt;
     
     </summary>
     
@@ -305,17 +254,16 @@
     <link href="http://yoursite.com/2020/03/29/01-%E5%8A%A8%E6%80%81%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/"/>
     <id>http://yoursite.com/2020/03/29/01-%E5%8A%A8%E6%80%81%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/</id>
     <published>2020-03-29T14:42:20.711Z</published>
-    <updated>2020-03-29T15:05:35.278Z</updated>
+    <updated>2020-03-29T16:05:38.732Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;什么是网站&quot;&gt;&lt;a href=&quot;#什么是网站&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;什么是网站&quot;&gt;&lt;a href=&quot;#什么是网站&quot; class=&quot;headerlink&quot; title=&quot;什么是网站&quot;&gt;&lt;/a&gt;什么是网站&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;可以在浏览器上通过一个地址直接访问（搭建WEB服务器）&lt;/li&gt;
+&lt;li&gt;用于提供一种（或多种）特定服务的，一系列具备相关性的网页组合的整体&lt;/li&gt;
+&lt;li&gt;如：博客、门户、电商、在线教育等&lt;/li&gt;
+&lt;li&gt;核心：渲染页面、表单处理、状态保持session&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -332,17 +280,12 @@
     <link href="http://yoursite.com/2020/03/29/02-JS%20BOM/"/>
     <id>http://yoursite.com/2020/03/29/02-JS%20BOM/</id>
     <published>2020-03-29T14:42:20.656Z</published>
-    <updated>2020-03-29T15:04:30.397Z</updated>
+    <updated>2020-03-29T16:06:00.968Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;注意&quot;&gt;&lt;a href=&quot;#注意&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;注意&quot;&gt;&lt;a href=&quot;#注意&quot; class=&quot;headerlink&quot; title=&quot;注意&quot;&gt;&lt;/a&gt;注意&lt;/h2&gt;&lt;p&gt;一、window一个特殊的属性:window.name,建议不用name当变量。&lt;/p&gt;
+&lt;p&gt;二、alert()、prompt()、confirm()实际不用，各浏览器样式不一样、不可控。改进：用div+CSS制作    对话框+后面的遮挡层。&lt;/p&gt;
     
     </summary>
     
@@ -359,17 +302,13 @@
     <link href="http://yoursite.com/2020/03/29/01-JavaScript%E5%9F%BA%E7%A1%80/"/>
     <id>http://yoursite.com/2020/03/29/01-JavaScript%E5%9F%BA%E7%A1%80/</id>
     <published>2020-03-29T14:42:20.653Z</published>
-    <updated>2020-03-29T15:06:08.789Z</updated>
+    <updated>2020-03-29T16:05:08.112Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;js遇到问题：用MDN（js官方文档）&quot;&gt;&lt;a href=&quot;#js遇到问题：用MDN（js官方文档）&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;js遇到问题：用MDN（js官方文档）&quot;&gt;&lt;a href=&quot;#js遇到问题：用MDN（js官方文档）&quot; class=&quot;headerlink&quot; title=&quot;js遇到问题：用MDN（js官方文档）&quot;&gt;&lt;/a&gt;js遇到问题：用MDN（js官方文档）&lt;/h2&gt;&lt;p&gt;MDN——在线帮助文档&lt;/p&gt;
+&lt;p&gt;W3C——离线帮助文档&lt;/p&gt;
+&lt;p&gt;参考手册——离线&lt;/p&gt;
     
     </summary>
     

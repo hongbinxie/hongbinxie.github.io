@@ -24,7 +24,7 @@
 <meta property="og:description" content="这是Vue-CLI的笔记，但也会复习下之前的Vue基础 1、官网：如有不懂，搜索对应工具官网 来查询具体哪个的使用 2、建议：打开git bash或cmd来输入命令。 ​            淘宝镜像cnpm比npm快 3、注意：若输入命令后不动、无反应，可能跟网速有关。 4、稍微了解webpack的话，就知道npm run serve命令在package.json中运行的是”serve”:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-29T14:42:20.933Z">
-<meta property="article:modified_time" content="2020-03-29T15:04:16.350Z">
+<meta property="article:modified_time" content="2020-03-29T16:06:19.725Z">
 <meta property="article:author" content="谢红斌">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
@@ -213,10 +213,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-29 22:42:20 / 修改时间：23:04:16" itemprop="dateCreated datePublished" datetime="2020-03-29T22:42:20+08:00">2020-03-29</time>
+              <time title="创建时间：2020-03-29 22:42:20" itemprop="dateCreated datePublished" datetime="2020-03-29T22:42:20+08:00">2020-03-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-30 00:06:19" itemprop="dateModified" datetime="2020-03-30T00:06:19+08:00">2020-03-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -253,6 +259,8 @@
 <p>3、注意：若输入命令后不动、无反应，可能跟网速有关。</p>
 <p>4、稍微了解webpack的话，就知道npm run serve命令在package.json中运行的是”serve”: “vue-cli-service serve”。若改成”vue-cli-service serve –open”：表示自动打开浏览器。</p>
 </blockquote>
+<a id="more"></a>
+
 <h1 id="单双引号、不加的问题"><a href="#单双引号、不加的问题" class="headerlink" title="单双引号、不加的问题"></a>单双引号、不加的问题</h1><blockquote>
 <p>变量值赋值的时候要根据是什么类型来给对应的符号</p>
 <p>String 字符串 类型的加双引号    name=”陈钰”;</p>
@@ -340,7 +348,7 @@
 <p>1.数据（数据定义）：在script中定义。</p>
 <figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">export default </span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">	data()&#123;	//定义，或者用data:function()&#123;&#125;</span></span><br><span class="line"><span class="xml">		return</span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">		</span></span><br><span class="line"><span class="template-variable">		&#125;</span></span><br><span class="line"><span class="xml">	&#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<p>2.模板语法（数据展现）：{{ 数据 }}。放入template中。</p>
+<p>2.模板语法（数据展现）：。放入template中。</p>
 <p>3.计算属性（数据操作）：在数据中写入函数、模板简化。</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">	函数名：<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> ...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -379,8 +387,8 @@
 <blockquote>
 <p>v-for若报错key，就在其后添加如:key=”‘arr’+item”、:key=”‘arr’+index”  或者关闭eslint检测</p>
 </blockquote>
-<p>​    v-for=’item in arr’    内容输入{{item}}，显示每项</p>
-<p>​    v-for=‘(item,index) in arr’    内容输入{{item}}、{{index}}，显示每项及下标</p>
+<p>​    v-for=’item in arr’    内容输入，显示每项</p>
+<p>​    v-for=‘(item,index) in arr’    内容输入、，显示每项及下标</p>
 <p>🔺v-if、v-for结合使用 会出现的问题：v-if不能放li里，应放在ul里，否则会报错。</p>
 <h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><blockquote>
 <p>组件名后缀在导入使用时可省略。</p>
@@ -646,7 +654,7 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
 </blockquote>
 <p>（2）组件如何使用数据？(3种)</p>
 <ul>
-<li>{{ this.$store.state.cityName }}
+<li>
 </li>
 <li><pre><code class="js"><span class="comment">//推荐</span>
 <span class="keyword">import</span> {mapState} <span class="keyword">from</span> <span class="string">'vuex'</span>

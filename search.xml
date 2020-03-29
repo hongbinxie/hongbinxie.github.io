@@ -5,6 +5,8 @@
     <url>/2020/03/29/02-Typora/</url>
     <content><![CDATA[<p>有导出成各种类型文件功能。</p>
 <p>markdown编辑器支持插入HTML5，可以把HTML5放进来、很多网站的api嵌入到里面。</p>
+<a id="more"></a>
+
 <p>图床：简书也有</p>
 <p>也可以在csdn里编辑，然后复制或保存草稿来做笔记。</p>
 <p>具体看教程，不需都记住只需要在用时复制过来.</p>
@@ -80,18 +82,16 @@
     <title>01-Git</title>
     <url>/2020/03/29/01-Git/</url>
     <content><![CDATA[<h1 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h1><ul>
-<li><p>版本控制：解决多人开发的过程，容易引起文件冲突。如svn、git</p>
-</li>
-<li><p>git的优势：具有svn的功能、具有互联网的特性、git有分支概念</p>
-</li>
-<li><p>git和github：</p>
-<ul>
+<li>版本控制：解决多人开发的过程，容易引起文件冲突。如svn、git</li>
+<li>git的优势：具有svn的功能、具有互联网的特性、git有分支概念</li>
+<li>git和github：<ul>
 <li>git客户端    github服务器端</li>
 </ul>
 </li>
-<li><p>git可将文件提交、下载到github上。git也可独立使用</p>
-</li>
+<li>git可将文件提交、下载到github上。git也可独立使用</li>
 </ul>
+<a id="more"></a>
+
 <h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><p>git 和 svn区别：</p>
 <p>​    svn    集中式版本控制：只能从服务器拿文件</p>
 <p>​    git    分布式版本控制：不仅可以从服务器拿文件，还可以从其他开发人员那拿文件</p>
@@ -207,6 +207,8 @@
 <p>3、注意：若输入命令后不动、无反应，可能跟网速有关。</p>
 <p>4、稍微了解webpack的话，就知道npm run serve命令在package.json中运行的是”serve”: “vue-cli-service serve”。若改成”vue-cli-service serve –open”：表示自动打开浏览器。</p>
 </blockquote>
+<a id="more"></a>
+
 <h1 id="单双引号、不加的问题"><a href="#单双引号、不加的问题" class="headerlink" title="单双引号、不加的问题"></a>单双引号、不加的问题</h1><blockquote>
 <p>变量值赋值的时候要根据是什么类型来给对应的符号</p>
 <p>String 字符串 类型的加双引号    name=”陈钰”;</p>
@@ -294,7 +296,7 @@
 <p>1.数据（数据定义）：在script中定义。</p>
 <figure class="highlight dust"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">export default </span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">	data()&#123;	//定义，或者用data:function()&#123;&#125;</span></span><br><span class="line"><span class="xml">		return</span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">		</span></span><br><span class="line"><span class="template-variable">		&#125;</span></span><br><span class="line"><span class="xml">	&#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<p>2.模板语法（数据展现）：{{ 数据 }}。放入template中。</p>
+<p>2.模板语法（数据展现）：。放入template中。</p>
 <p>3.计算属性（数据操作）：在数据中写入函数、模板简化。</p>
 <figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">	函数名：<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> ...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -333,8 +335,8 @@
 <blockquote>
 <p>v-for若报错key，就在其后添加如:key=”‘arr’+item”、:key=”‘arr’+index”  或者关闭eslint检测</p>
 </blockquote>
-<p>​    v-for=’item in arr’    内容输入{{item}}，显示每项</p>
-<p>​    v-for=‘(item,index) in arr’    内容输入{{item}}、{{index}}，显示每项及下标</p>
+<p>​    v-for=’item in arr’    内容输入，显示每项</p>
+<p>​    v-for=‘(item,index) in arr’    内容输入、，显示每项及下标</p>
 <p>🔺v-if、v-for结合使用 会出现的问题：v-if不能放li里，应放在ul里，否则会报错。</p>
 <h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><blockquote>
 <p>组件名后缀在导入使用时可省略。</p>
@@ -600,7 +602,7 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
 </blockquote>
 <p>（2）组件如何使用数据？(3种)</p>
 <ul>
-<li>{{ this.$store.state.cityName }}
+<li>
 </li>
 <li><pre><code class="js"><span class="comment">//推荐</span>
 <span class="keyword">import</span> {mapState} <span class="keyword">from</span> <span class="string">'vuex'</span>
@@ -649,6 +651,8 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
 <p>Model——》模型——》数据（js变量）</p>
 <p>View——》视图——》用户所见界面（HTML，CSS）</p>
 <p>Control——》控制器——》事件交互——》如何根据视图与用户交互后改变数据（通过DOM对象1绑定事件，将变量进行修改）</p>
+<a id="more"></a>
+
 <p>2、MVVM模式</p>
 <p>视图（view）跟数据（model）通过vue（vm）进行双向绑定</p>
 <figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!-- view --&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span></span><br><span class="line"><span class="xml">	</span><span class="template-variable">&#123;&#123;message&#125;&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">			</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">			</span></span><br><span class="line"><span class="xml">	//vm</span></span><br><span class="line"><span class="xml">var app = new Vue(&#123;</span></span><br><span class="line"><span class="xml">	el:"#app",</span></span><br><span class="line"><span class="xml">	//model</span></span><br><span class="line"><span class="xml">    data:&#123;</span></span><br><span class="line"><span class="xml">		message:"Hello World!"</span></span><br><span class="line"><span class="xml">	&#125;</span></span><br><span class="line"><span class="xml">&#125;)</span></span><br></pre></td></tr></table></figure>
@@ -972,6 +976,8 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
     <content><![CDATA[<p>官网<a href="http://nodejs.cn/" target="_blank" rel="noopener">http://nodejs.cn/</a></p>
 <h2 id="Node是什么？"><a href="#Node是什么？" class="headerlink" title="Node是什么？"></a>Node是什么？</h2><p><strong><em>Node</em>.<em>js</em> 是环境</strong>。一个基于 Chrome V8 引擎的 <strong>JS运行 环境</strong>。</p>
 <p>该环境里的JS操作<strong>ECMA</strong>(ECMAscript)。</p>
+<a id="more"></a>
+
 <blockquote>
 <p>该环境里的js不能操作BOM、DOM。BOM、DOM是浏览器的</p>
 </blockquote>
@@ -1302,6 +1308,8 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
     <title>06-Socket.io</title>
     <url>/2020/03/29/06-Socket.io/</url>
     <content><![CDATA[<p>在看该文档前，建议先看下Node.js。</p>
+<a id="more"></a>
+
 <h2 id="什么是Socket-IO"><a href="#什么是Socket-IO" class="headerlink" title="什么是Socket.IO"></a>什么是Socket.IO</h2><p>Socket.IO是一个库，可用于在浏览器和服务器之间进行<strong>实时</strong>，<strong>双向</strong>和基于<strong>事件(异步，不用一直等)</strong>的通信。它包括：</p>
 <ul>
 <li>使Node.js服务器：<a href="https://github.com/socketio/socket.io" target="_blank" rel="noopener">来源</a> | <a href="https://socket.io/docs/server-api/" target="_blank" rel="noopener">API</a></li>
@@ -1490,6 +1498,8 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
     <content><![CDATA[<p>产生背景：没有对比就没有伤害，如过去的上传/下载/延迟速度。</p>
 <p>用谷歌来模拟不同网速下的网站加载速率：</p>
 <p>Network-&gt;右上的下标Add…-&gt;Add custom profile…-&gt;文件名、上传/下载/延迟速度-&gt;返回点右上下标中的该文件名，可以在该模式测试当前网页加载速度。</p>
+<a id="more"></a>
+
 <h2 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h2><p>之前学到的 让浏览器<strong>发出对服务端的请求</strong>，获得服务端的数据的几种方式：</p>
 <ul>
 <li>地址栏输入地址，回车，刷新 </li>
@@ -1795,6 +1805,8 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
     <title>04-MySQL</title>
     <url>/2020/03/29/04-MySQL/</url>
     <content><![CDATA[<h2 id="主要目的"><a href="#主要目的" class="headerlink" title="主要目的"></a>主要目的</h2><p>学习数据库怎么安装、怎么使用、怎么通过代码的方式去操作它。</p>
+<a id="more"></a>
+
 <h2 id="什么是数据库"><a href="#什么是数据库" class="headerlink" title="什么是数据库"></a>什么是数据库</h2><p>数据库是一种数据存储的手段，只不过为了便于我们对数据的操作做了很多功能。</p>
 <p>数据库就是数据的仓库，用来按照特定的结构去组织和管理我们的数据，有了数据库我们就可以更加方便、便捷的 操作（C / R / U / D）我们需要保存的数据。</p>
 <p><strong>数据库查询</strong>：指的是操作数据库的过程（增、删、改、查）</p>
@@ -1964,6 +1976,8 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
     <title>03-PHP</title>
     <url>/2020/03/29/03-PHP/</url>
     <content><![CDATA[<p>在看该笔记前，要先看动态网页站开发基础</p>
+<a id="more"></a>
+
 <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
 <li>php学习笔记有的中间不用看，看最后总结</li>
 <li>手册查找：在索引里找</li>
@@ -2378,6 +2392,8 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
     <title>02-HTTP</title>
     <url>/2020/03/29/02-HTTP/</url>
     <content><![CDATA[<h2 id="回顾：请求响应过程（web工作流程）"><a href="#回顾：请求响应过程（web工作流程）" class="headerlink" title="回顾：请求响应过程（web工作流程）"></a>回顾：请求响应过程（web工作流程）</h2><p>了解整个WEB是怎样运转的？从浏览器输入一个地址发起对网站的请求整个过程发生了什么？</p>
+<a id="more"></a>
+
 <blockquote>
 <p>注意：服务端不是返回文件，而是返回执行后的结果</p>
 </blockquote>
@@ -2461,6 +2477,8 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
 <li>如：博客、门户、电商、在线教育等</li>
 <li>核心：渲染页面、表单处理、状态保持session</li>
 </ul>
+<a id="more"></a>
+
 <h2 id="网站开发的前提知识"><a href="#网站开发的前提知识" class="headerlink" title="网站开发的前提知识"></a>网站开发的前提知识</h2><p>但只能做网页、给页面加上些动态的交互。</p>
 <p>路线：网页开发-&gt;网站开发（呈现些文章、商品等内容 ）-&gt;应用开发（如百度脑图）</p>
 <p>1.硬性知识：</p>
@@ -2747,6 +2765,8 @@ exclude属性 ：不包含哪个。用,隔开(要给那个页面加数据name)</
     <url>/2020/03/29/02-JS%20BOM/</url>
     <content><![CDATA[<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>一、window一个特殊的属性:window.name,建议不用name当变量。</p>
 <p>二、alert()、prompt()、confirm()实际不用，各浏览器样式不一样、不可控。改进：用div+CSS制作    对话框+后面的遮挡层。</p>
+<a id="more"></a>
+
 <p>三、javaScript分三个部分：</p>
 <p>1.ECMAScript标准——基本语法</p>
 <p>2.DOM——Document Object Model 文档对象模型，操作页面元素的</p>
@@ -2975,6 +2995,8 @@ clearInterval(element.timeId);
     <content><![CDATA[<h2 id="js遇到问题：用MDN（js官方文档）"><a href="#js遇到问题：用MDN（js官方文档）" class="headerlink" title="js遇到问题：用MDN（js官方文档）"></a>js遇到问题：用MDN（js官方文档）</h2><p>MDN——在线帮助文档</p>
 <p>W3C——离线帮助文档</p>
 <p>参考手册——离线</p>
+<a id="more"></a>
+
 <p>ctrl+鼠标左键    转到定义</p>
 <p>百度、谷歌，多对比。</p>
 <p>找错：用console.log(“哈哈”);在事件内运行，若不行，说明事件没执行，再将这代码放到上一层，上层不行，说明上层不行，再放上上层…直到行了,说明其下层代码没执行，检查下层代码。（若循环不行，输出该循环元素，若为空，说明上面有错，若上面输出哈哈还是不成功，放到循环内、事件内看看哪错了。）</p>
